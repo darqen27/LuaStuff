@@ -74,17 +74,23 @@ end
 
 	
 function checkFuelall()
-	corefuel = {}
+	corefuel.fissioncore = {}
+	corefuel.breedercore = {}
 	term.clear()
 	local n=1
 	for i=1, #fissioncore do
-	corefuel[n] = fissioncore[n].checkFuel()
-	print("Core #" .. n .. " fuel level is ".. corefuel[n])
+	corefuel.fissioncore[n] = fissioncore[n].checkFuel()
+	print("Fission Core #" .. n .. " fuel level is ".. corefuel.fissioncores[n])
+	n=n+1
+	end
+	for i=1, #breedercore do
+	corefuel.breedercore[n] = breedercore[n].checkFuel()
+	print("Breeder Core #" .. n .. " fuel level is ".. corefuel.breedcores[n])
 	n=n+1
 	end
 end
 
-function setCoordsAll()
+function setCoordsAll(coretype)
 	corecoords = {}
 	local function fissioncoords()
 		corecoords.fissioncore = {}
@@ -106,6 +112,11 @@ function setCoordsAll()
 			n=n+1
 		end
 	end
+	if coretype == "breeder" then breedercores()
+	elseif coretype == "fission" then fissioncores()
+	else print("Invalid selection"); return
+	end
+	
 end
 
 function wait(ticks) -- This actually is based on in game ticks(20 per second) 
@@ -119,8 +130,10 @@ end
 	
 getAddresslist("breeder")
 getAddresslist("fission")
-setCoordsAll()
-setCoordsAll()
+wait(200)
+term.clear()
+setCoordsAll("breeder")
+setCoordsAll("fission")
 wait(200)
 -- Basic repeat giving some information, showing the basic functions of this program.
 repeat
