@@ -35,7 +35,7 @@ function getAddresslist(coretype) -- Too many identical names, must set proxies 
 	end
 	if coretype == "breeder" then breedercores()
 	elseif coretype == "fission" then fissioncores()
-	else print("Invalid selection"), return
+	else print("Invalid selection"); return
 	end
 end
 
