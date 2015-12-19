@@ -13,10 +13,10 @@ function getAddresslist() -- Too many identical names, must set proxies to be ab
 		fissioncore = {}
 		local n = 1
 		for k,v in pairs(component.list("FuelCore")) do
-		compaddresslist[n] = k
-		fissioncore[n] = component.proxy(compaddresslist[n])
-		print("Fission core #" .. n .." address assigned.") 
-		n = n+1
+			compaddresslist[n] = k
+			fissioncore[n] = component.proxy(compaddresslist[n])
+			print("Fission core #" .. n .." address assigned.") 
+			n = n+1
 		end
 	end
 	local function breedercores()
@@ -25,18 +25,14 @@ function getAddresslist() -- Too many identical names, must set proxies to be ab
 		breedercore = {}
 		local n=1
 		for k,v in pairs(component.list("Breeder")) do
-		if k == nil then 
-			return false
-			else
-			compaddresslist[n]=k
-			breedercore[n] = component.proxy(compaddresslist[n])
-			print("Breeder core #" .. n .." address assigned.") 
-			n=n+1
-			end
+				if k == nil then return false
+				else compaddresslist[n]=k
+				breedercore[n] = component.proxy(compaddresslist[n])
+				print("Breeder core #" .. n .." address assigned.") 
+				n=n+1
+				end
 		end
 	end
-fissioncores()
-breedercores()
 end
 
 
@@ -86,12 +82,25 @@ end
 
 function setCoordsAll()
 	corecoords = {}
-	local n=1
-	for i=1, #fissioncore do
-	corecoords[n]={x=0, y=0, z=0}
-	corecoords[n].x, corecoords[n].y, corecoords[n].z = fissioncore[n].getCoords()
-	print("Core #" .. n .. " coordinates are ".. corecoords[n].x .. ", " .. corecoords[n].y .. ", " .. corecoords[n].z)
-	n=n+1
+	local function fissioncoords()
+		corecoords.fissioncoords = {}
+		local n=1
+		for i=1, #fissioncore do
+			corecoords.fissioncore[n]={x=0, y=0, z=0}
+			corecoords.fissioncore[n].x, corecoords.fissioncore[n].y, corecoords.fissioncore[n].z = fissioncore[n].getCoords()
+			print("Fission Core #" .. n .. " coordinates are ".. corecoords.fissioncore[n].x .. ", " .. corecoords.fissioncore[n].y .. ", " .. corecoords.fissioncore[n].z)
+			n=n+1
+		end
+	end
+	local function breedercoords()
+		corecoords.breedercoords = {}
+		local n=1
+		for i=1, #breedercore do
+			corecoords.breedercore[n]={x=0, y=0, z=0}
+			corecoords.breedercore[n].x, corecoords.breedercore[n].y, corecoords.breedercore[n].z = breedercore[n].getCoords()
+			print("Breeder Core #" .. n .. " coordinates are ".. corecoords.breedercore[n].x .. ", " .. corecoords.breedercore[n].y .. ", " .. corecoords.breedercore[n].z)
+			n=n+1
+		end
 	end
 end
 
@@ -104,8 +113,10 @@ end
 
 
 	
-getAddresslist()
-setCoordsAll()
+getAddresslist.fissioncores()
+getAddresslist.breedercores()
+setCoordsAll.fissioncoords()
+setCoordsAll.breedercoords()
 wait(200)
 -- Basic repeat giving some information, showing the basic functions of this program.
 repeat
