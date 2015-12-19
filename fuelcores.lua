@@ -158,13 +158,14 @@ setCoordsAll("breeder")
 setCoordsAll("fission")
 wait(200)
 -- Basic repeat giving some information, showing the basic functions of this program.
-repeat
+while true do
+if keyboard.isKeyDown(keyboard.keys.q) then return false
+else
 term.clear()
 getTempall()
 wait(100)
 term.clear()
 checkFuelall()
 wait(200)
-until keyboard.isKeyDown(keyboard.keys.q)
-
+end
 
