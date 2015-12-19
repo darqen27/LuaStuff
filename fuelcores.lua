@@ -83,7 +83,7 @@ end
 function setCoordsAll()
 	corecoords = {}
 	local function fissioncoords()
-		corecoords.fissioncoords = {}
+		corecoords.fissioncore = {}
 		local n=1
 		for i=1, #fissioncore do
 			corecoords.fissioncore[n]={x=0, y=0, z=0}
@@ -93,7 +93,7 @@ function setCoordsAll()
 		end
 	end
 	local function breedercoords()
-		corecoords.breedercoords = {}
+		corecoords.breedercore = {}
 		local n=1
 		for i=1, #breedercore do
 			corecoords.breedercore[n]={x=0, y=0, z=0}
