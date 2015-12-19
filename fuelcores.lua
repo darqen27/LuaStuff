@@ -24,7 +24,7 @@ function getAddresslist() -- Too many identical names, must set proxies to be ab
 		breedercore = {}
 		local n=1
 		for k,v in pairs(component.list("Breeder")) do
-		if k = nil then 
+		if k == nil then 
 			return false
 			else
 			compaddresslist[n]=k
