@@ -7,7 +7,7 @@ local computer = require("computer")
 
 
 function getAddresslist() -- Too many identical names, must set proxies to be able to interact with all of the Fuel Core's.
-	local function fissioncores()
+	function fissioncores()
 		print("Getting fisson core addresses")
 		local compaddresslist = {}
 		fissioncore = {}
@@ -19,7 +19,7 @@ function getAddresslist() -- Too many identical names, must set proxies to be ab
 			n = n+1
 		end
 	end
-	local function breedercores()
+	function breedercores()
 		print("Getting breeder core addresses")
 		local compaddresslist = {}
 		breedercore = {}
