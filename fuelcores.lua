@@ -161,7 +161,7 @@ wait(200)
 while true do
 		event.listen("key_down", stopme(key))
 		local function stopme(key)
-			if key ~= keyboard.isKeyDown(keyboard.keys.q) then return end	
+			if key ~= keyboard.keys.q then return end	
 		end
 		term.clear()
 		getTempall()
