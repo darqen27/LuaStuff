@@ -6,11 +6,7 @@ local computer = require("computer")
 -- local event = require("events") Future use with component.modem()
 
 
-<<<<<<< HEAD
 function getAddresslist(coretype) -- Too many identical names, must set proxies to be able to interact with all of the Fuel Core's.
-=======
-function getAddresslist() -- Too many identical names, must set proxies to be able to interact with all of the Fuel Core's.
->>>>>>> 8ee500dda00c5f06a6769c7b7f8a9ebc090b3fb3
 	local function fissioncores()
 		print("Getting fisson core addresses")
 		local compaddresslist = {}
@@ -36,6 +32,10 @@ function getAddresslist() -- Too many identical names, must set proxies to be ab
 				n=n+1
 				end
 		end
+	end
+	if coretype == "breeder" then breedercores()
+	elseif coretype == "fission" then fissioncores()
+	else print("Invalid selection"), return
 	end
 end
 
@@ -117,10 +117,10 @@ end
 
 
 	
-getAddresslist(fissioncores())
-getAddresslist(breedercores())
-setCoordsAll(fissioncoords())
-setCoordsAll(breedercoords())
+getAddresslist("breeder")
+getAddresslist("fission")
+setCoordsAll()
+setCoordsAll()
 wait(200)
 -- Basic repeat giving some information, showing the basic functions of this program.
 repeat
