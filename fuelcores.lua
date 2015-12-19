@@ -42,14 +42,27 @@ end
 
 
 function getTempall()
-	coretemp={}
-	term.clear()
-	local n=1
-	for i=1, #fissioncore do
-	coretemp[n] = fissioncore[n].getTemperature()
-	print("Core #" .. n .. " temperature is ".. coretemp[n])
-	n=n+1
+	coretemp = {}
+	coretemp.fissioncore = {}
+	coretemp.breedercore = {}
+	local function fissioncores()
+		local n=1
+		for i=1, #fissioncore do
+		coretemp.fissioncore[n] = fissioncore[n].getTemperature()
+		print("Fission Core #" .. n .. " temperature is ".. coretemp.fissioncore[n])
+		n=n+1
+		end
 	end
+	local function breedercores()
+		local n=1
+		for i=1, #breedercore do
+		coretemp.breedercore[n] = breedercore[n].getTemperature()
+		print("Breeder Core #" .. n .. " temperature is ".. coretemp.breedercore[n])
+		n=n+1
+		end
+	end
+fissioncores()
+breedercores()
 end
 
 function getTemp(n)
@@ -148,8 +161,10 @@ wait(200)
 repeat
 term.clear()
 getTempall()
+wait(100)
+term.clear()
 checkFuelall()
-wait(30)
+wait(200)
 until keyboard.isKeyDown(keyboard.keys.q)
 
 
