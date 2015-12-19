@@ -149,6 +149,7 @@ function wait(ticks) -- This actually is based on in game ticks(20 per second)
 end
 
 local quitkey = string.byte("q")
+local running = true
 local myEventHandlers = setmetatable({}, { __index = function() return unknownEvent end })
 function unknownEvent()
 
@@ -156,7 +157,7 @@ end
 
 function myEventHandlers.key_down(address, keypress, code, name)
 	if (keypress == quitkey) then
-	return false
+	running = false
 	end
 end
 function handleEvent(eventID, ...)
@@ -173,7 +174,7 @@ setCoordsAll("breeder")
 setCoordsAll("fission")
 os.sleep(2)
 -- Basic repeat giving some information, showing the basic functions of this program.
-while true do
+while running do
 		event.listen("key_down", handleEvent)
 		term.clear()
 		getTempall()
