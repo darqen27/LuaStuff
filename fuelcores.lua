@@ -159,7 +159,7 @@ setCoordsAll("fission")
 wait(200)
 -- Basic repeat giving some information, showing the basic functions of this program.
 while true do
-	event.listen(keyboard.isKeyDown(keyboard.keys.q), return false)
+	event.listen(keyboard.isKeyDown(keyboard.keys.q), false)
 		term.clear()
 		getTempall()
 		wait(100)
