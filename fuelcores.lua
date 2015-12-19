@@ -10,13 +10,13 @@ function getAddresslist() -- Too many identical names, must set proxies to be ab
 	local function fissioncores()
 		print("Getting fisson core addresses")
 		local compaddresslist = {}
-		fissioncore={}
-		local n=1
+		fissioncore = {}
+		local n = 1
 		for k,v in pairs(component.list("FuelCore")) do
-		compaddresslist[n]=k
-		fissoncore[n] = component.proxy(compaddresslist[n])
+		compaddresslist[n] = k
+		fissioncore[n] = component.proxy(compaddresslist[n])
 		print("Fission core #" .. n .." address assigned.") 
-		n=n+1
+		n = n+1
 		end
 	end
 	local function breedercores()
