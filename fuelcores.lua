@@ -159,12 +159,10 @@ setCoordsAll("fission")
 wait(200)
 -- Basic repeat giving some information, showing the basic functions of this program.
 while true do
-		local function break(key)
-			if key == keyboard.isKeyDown(keyboard.keys.q) then return false
-			else return true
-			end	
+		event.listen("key_down", stopme(key))
+		local function stopme(key)
+			if key != keyboard.isKeyDown(keyboard.keys.q) then return true end	
 		end
-		event.listen("key_down", break(key))
 		term.clear()
 		getTempall()
 		wait(100)
