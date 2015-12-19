@@ -3,7 +3,7 @@ local component = require("component")
 local term = require("term")
 local keyboard = require("keyboard")
 local computer = require("computer")
-local event = require("events")
+local event = require("event")
 
 
 function getAddresslist(coretype) -- Too many identical names, must set proxies to be able to interact with all of the Fuel Core's.
