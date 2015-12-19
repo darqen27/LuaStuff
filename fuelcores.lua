@@ -112,8 +112,8 @@ function setCoordsAll(coretype)
 			n=n+1
 		end
 	end
-	if coretype == "breeder" then breedercores()
-	elseif coretype == "fission" then fissioncores()
+	if coretype == "breeder" then breedercoords()
+	elseif coretype == "fission" then fissioncoords()
 	else print("Invalid selection"); return
 	end
 	
