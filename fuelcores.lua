@@ -148,25 +148,29 @@ function wait(ticks) -- This actually is based on in game ticks(20 per second)
   end
 end
 
+function stopme(key)
+	if key ~= keyboard.keys.q then return
+	else return false	
+	end	
+end
+
 
 	
 getAddresslist("breeder")
 getAddresslist("fission")
-wait(200)
+os.sleep(2)
 term.clear()
 setCoordsAll("breeder")
 setCoordsAll("fission")
-wait(200)
+os.sleep(2)
 -- Basic repeat giving some information, showing the basic functions of this program.
 while true do
 		event.listen("key_down", stopme(key))
-		local function stopme(key)
-			if key ~= keyboard.keys.q then return end	
-		end
 		term.clear()
 		getTempall()
-		wait(100)
+		os.sleep(2)
 		term.clear()
 		checkFuelall()
-		wait(200)
+		print("Press q to quit")
+		os.sleep(2)
 end
