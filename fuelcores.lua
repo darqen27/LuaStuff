@@ -74,6 +74,7 @@ end
 
 	
 function checkFuelall()
+	corefuel = {}
 	corefuel.fissioncore = {}
 	corefuel.breedercore = {}
 	term.clear()
