@@ -81,7 +81,7 @@ function checkFuelall()
 		local n=1
 		for i=1, #fissioncore do
 		corefuel.fissioncore[n] = fissioncore[n].checkFuel()
-		print("Fission Core #" .. n .. " fuel level is ".. corefuel.fissioncores[n])
+		print("Fission Core #" .. n .. " fuel level is ".. corefuel.fissioncore[n])
 		n=n+1
 		end
 	end
@@ -90,7 +90,7 @@ function checkFuelall()
 		local n=1
 		for i=1, #breedercore do
 		corefuel.breedercore[n] = breedercore[n].checkFuel()
-		print("Breeder Core #" .. n .. " fuel level is ".. corefuel.breedcores[n])
+		print("Breeder Core #" .. n .. " fuel level is ".. corefuel.breedercore[n])
 		n=n+1
 		end
 	end
