@@ -18,6 +18,7 @@ function getAddresslist() -- Too many identical names, must set proxies to be ab
 		print("Fission core #" .. n .." address assigned.") 
 		n=n+1
 		end
+	end
 	local function breedercores()
 		print("Getting breeder core addresses")
 		local compaddresslist = {}
@@ -31,6 +32,7 @@ function getAddresslist() -- Too many identical names, must set proxies to be ab
 			breedercore[n] = component.proxy(compaddresslist[n])
 			print("Breeder core #" .. n .." address assigned.") 
 			n=n+1
+			end
 		end
 	end
 fissioncores()
