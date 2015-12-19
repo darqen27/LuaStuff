@@ -113,10 +113,10 @@ end
 
 
 	
-getAddresslist["fissioncores"]
-getAddresslist["breedercores"]
-setCoordsAll["fissioncoords"]
-setCoordsAll['breedercoords']
+getAddresslist(fissioncores())
+getAddresslist(breedercores())
+setCoordsAll(fissioncoords())
+setCoordsAll(breedercoords())
 wait(200)
 -- Basic repeat giving some information, showing the basic functions of this program.
 repeat
