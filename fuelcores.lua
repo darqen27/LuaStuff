@@ -165,7 +165,7 @@ setCoordsAll("fission")
 os.sleep(2)
 -- Basic repeat giving some information, showing the basic functions of this program.
 while true do
-		event.listen("key_down", stopme(key))
+		event.listen("key_down", stopme)
 		term.clear()
 		getTempall()
 		os.sleep(2)
