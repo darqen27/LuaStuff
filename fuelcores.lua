@@ -148,14 +148,23 @@ function wait(ticks) -- This actually is based on in game ticks(20 per second)
   end
 end
 
-function stopme(key)
-	if key ~= keyboard.keys.q then return
-	else return false	
-	end	
+local quitkey = string.byte("q")
+local myEventHandlers = setmetatable({}, { __index = function() return unknownEvent end })
+function unknownEvent()
+
 end
 
+function myEventHandlers.key_down(address, keypress, code, name)
+	if (keypress == quitkey) then
+	return false
+	end
+end
+function handleEvent(eventID, ...)
+	if (eventID) then
+		myEventHandlers[eventID](...)
+	end
+end
 
-	
 getAddresslist("breeder")
 getAddresslist("fission")
 os.sleep(2)
@@ -165,7 +174,7 @@ setCoordsAll("fission")
 os.sleep(2)
 -- Basic repeat giving some information, showing the basic functions of this program.
 while true do
-		event.listen("key_down", stopme)
+		event.listen("key_down", handleEvent)
 		term.clear()
 		getTempall()
 		os.sleep(2)
