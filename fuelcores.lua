@@ -3,7 +3,7 @@ local component = require("component")
 local term = require("term")
 local keyboard = require("keyboard")
 local computer = require("computer")
--- local event = require("events") Future use with component.modem()
+local event = require("events")
 
 
 function getAddresslist(coretype) -- Too many identical names, must set proxies to be able to interact with all of the Fuel Core's.
@@ -159,13 +159,11 @@ setCoordsAll("fission")
 wait(200)
 -- Basic repeat giving some information, showing the basic functions of this program.
 while true do
-	if keyboard.isKeyDown(keyboard.keys.q) then return false
-		else
+	event.listen("key_down", return false)
 		term.clear()
 		getTempall()
 		wait(100)
 		term.clear()
 		checkFuelall()
 		wait(200)
-	end
 end
