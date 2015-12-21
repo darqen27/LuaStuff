@@ -203,10 +203,12 @@ function handleEvent(eventID, ...)
 		myEventHandlers[eventID](...)
 	end
 end
-
-if (checkAddress=(component.list("Breeder"))) ~= nil then getAddresslist("breeder") else return print("No breeder cores detected!") end
-if (checkAddress=(component.list("Fission"))) ~= nil then getAddresslist("fission") else return print("No fission cores detected!") end
-if (checkAddress=(component.list("Pebble"))) ~= nil then getAddresslist("pebble") else return print("No pebble bed cores detected!") end
+checkAddress = component.list("Breeder")
+if checkAddress ~= nil then getAddresslist("breeder") else return print("No breeder cores detected!") end
+checkAddress = component.list("FuelCore")
+if checkAddress ~= nil then getAddresslist("fission") else return print("No fission cores detected!") end
+checkAddress = component.list("Pebble")
+if checkAddress ~= nil then getAddresslist("pebble") else return print("No pebble bed cores detected!") end
 os.sleep(3)
 term.clear()
 setCoordsAll("breeder")
