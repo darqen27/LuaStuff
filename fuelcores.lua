@@ -18,6 +18,7 @@ function getAddresslist(coretype) -- Too many identical names, must set proxies 
 			fissioncore[n] = component.proxy(compaddresslist[n])
 			print("Fission core #" .. n .." address assigned.") 
 			n = n+1
+			end
 		end
 	end
 	local function breedercores()
@@ -216,3 +217,4 @@ while running do
 		print("Press q to quit")
 		os.sleep(2)
 end
+
