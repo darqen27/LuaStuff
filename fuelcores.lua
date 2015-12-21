@@ -6,26 +6,27 @@ local computer = require("computer")
 local event = require("event")
 
 
-function getAddresslist(coretype) -- Too many identical names, must set proxies to be able to interact with all of the Fuel Core's.
+function getAddresslist(coretype) -- Too many identical names, must set proxies to be able to interact with all of the different core's.
 	local function fissioncores()
-		print("Getting fisson core addresses")
+		print("Getting fission core addresses.")
 		local compaddresslist = {}
 		fissioncore = {}
 		local n = 1
 		for k,v in pairs(component.list("FuelCore")) do
-			compaddresslist[n] = k
+			if k == nil then return print("No fission cores detected!")
+			else compaddresslist[n] = k
 			fissioncore[n] = component.proxy(compaddresslist[n])
 			print("Fission core #" .. n .." address assigned.") 
 			n = n+1
 		end
 	end
 	local function breedercores()
-		print("Getting breeder core addresses")
+		print("Getting breeder core addresses.")
 		local compaddresslist = {}
 		breedercore = {}
 		local n=1
 		for k,v in pairs(component.list("Breeder")) do
-				if k == nil then return false
+				if k == nil then return print("No breeder cores detected!")
 				else compaddresslist[n]=k
 				breedercore[n] = component.proxy(compaddresslist[n])
 				print("Breeder core #" .. n .." address assigned.") 
@@ -33,8 +34,25 @@ function getAddresslist(coretype) -- Too many identical names, must set proxies 
 				end
 		end
 	end
+
+	local function pebblecores()
+	print("Getting pebble bed core addresses.")
+	local compaddresslist = {}
+	pebblecore = {}
+	local n=1
+	for k,v in pairs(component.list("Pebble")) do
+			if k == nil then return print("No pebble bed cores detected!")
+			else compaddresslist[n]=k
+			pebblecore[n] = component.proxy(compaddresslist[n])
+			print("Pebble bed core #" .. n .." address assigned.") 
+			n=n+1
+			end
+		end
+	end
+
 	if coretype == "breeder" then breedercores()
 	elseif coretype == "fission" then fissioncores()
+	elseif coretype == "pebble" then pebblecores()
 	else print("Invalid selection"); return
 	end
 end
@@ -134,19 +152,31 @@ function setCoordsAll(coretype)
 			n=n+1
 		end
 	end
+	local function pebblecoords()
+		corecoords.pebblecore = {}
+		local n=1
+		for i=1, #pebblecore do
+			corecoords.pebblecore[n]={x=0, y=0, z=0}
+			corecoords.pebblecore[n].x, corecoords.pebblecore[n].y, corecoords.pebblecore[n].z = pebblecore[n].getCoords()
+			print("Pebble Bed Core #" .. n .. " coordinates are ".. corecoords.pebblecore[n].x .. ", " .. corecoords.pebblecore[n].y .. ", " .. corecoords.pebblecore[n].z)
+			n=n+1
+		end
+	end
+
 	if coretype == "breeder" then breedercoords()
 	elseif coretype == "fission" then fissioncoords()
+	elseif coretype == "pebble" then pebblecoords()
 	else print("Invalid selection"); return
 	end
 	
 end
 
-function wait(ticks) -- This actually is based on in game ticks(20 per second) 
-  local start = os.time()
-  while os.time() < start + ticks do
-  os.sleep(0)
-  end
-end
+# local function wait(ticks) -- This actually is based on in game ticks(20 per second) 
+#  local start = os.time() -- os.time() is based on in game ticks as well
+#  while os.time() < start + ticks do -- Somehow this is broken, will use os.sleep() for less precise control for now
+#  os.sleep(0)
+#  end
+# end
 
 local quitkey = string.byte("q")
 local running = true
@@ -168,10 +198,12 @@ end
 
 getAddresslist("breeder")
 getAddresslist("fission")
+getAddresslist("pebble")
 os.sleep(2)
 term.clear()
 setCoordsAll("breeder")
 setCoordsAll("fission")
+setCoordsAll("pebble")
 os.sleep(2)
 -- Basic repeat giving some information, showing the basic functions of this program.
 while running do
