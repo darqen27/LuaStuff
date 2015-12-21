@@ -13,8 +13,7 @@ function getAddresslist(coretype) -- Too many identical names, must set proxies 
 		fissioncore = {}
 		local n = 1
 		for k,v in pairs(component.list("FuelCore")) do
-			if k ~= tostring(...) then return print("No fission cores detected!")
-			else compaddresslist[n] = k
+			compaddresslist[n] = k
 			fissioncore[n] = component.proxy(compaddresslist[n])
 			print("Fission core #" .. n .." address assigned.") 
 			n = n+1
@@ -26,9 +25,8 @@ function getAddresslist(coretype) -- Too many identical names, must set proxies 
 		local compaddresslist = {}
 		breedercore = {}
 		local n=1
-		for k,v in pairs(component.list("Breeder")) do
-				if k ~= tostring(...) then return print("No breeder cores detected!")
-				else compaddresslist[n]=k
+		for k,v in pairs(component.list("Breeder")) do				
+				compaddresslist[n]=k
 				breedercore[n] = component.proxy(compaddresslist[n])
 				print("Breeder core #" .. n .." address assigned.") 
 				n=n+1
@@ -42,8 +40,7 @@ function getAddresslist(coretype) -- Too many identical names, must set proxies 
 	pebblecore = {}
 	local n=1
 	for k,v in pairs(component.list("Pebble")) do
-			if k ~= tostring(...) then return print("No pebble bed cores detected!")
-			else compaddresslist[n]=k
+			compaddresslist[n]=k
 			pebblecore[n] = component.proxy(compaddresslist[n])
 			print("Pebble bed core #" .. n .." address assigned.") 
 			n=n+1
@@ -191,6 +188,7 @@ end
 local quitkey = string.byte("q")
 local running = true
 local myEventHandlers = setmetatable({}, { __index = function() return unknownEvent end })
+local checkAddress = {}
 function unknownEvent()
 
 end
@@ -206,9 +204,9 @@ function handleEvent(eventID, ...)
 	end
 end
 
-getAddresslist("breeder")
-getAddresslist("fission")
-getAddresslist("pebble")
+if checkAddress=(component.list("Breeder")) ~= nil then getAddresslist("breeder") else return print("No breeder cores detected!") end
+if checkAddress=(component.list("Fission")) ~= nil then getAddresslist("fission") else return print("No fission cores detected!") end
+if checkAddress=(component.list("Pebble")) ~= nil then getAddresslist("pebble") else return print("No pebble bed cores detected!") end
 os.sleep(3)
 term.clear()
 setCoordsAll("breeder")
