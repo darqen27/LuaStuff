@@ -13,7 +13,7 @@ function getAddresslist(coretype) -- Too many identical names, must set proxies 
 		fissioncore = {}
 		local n = 1
 		for k,v in pairs(component.list("FuelCore")) do
-			if not k then return print("No fission cores detected!")
+			if not v then return print("No fission cores detected!")
 			else compaddresslist[n] = k
 			fissioncore[n] = component.proxy(compaddresslist[n])
 			print("Fission core #" .. n .." address assigned.") 
@@ -27,7 +27,7 @@ function getAddresslist(coretype) -- Too many identical names, must set proxies 
 		breedercore = {}
 		local n=1
 		for k,v in pairs(component.list("Breeder")) do
-				if not k then return print("No breeder cores detected!")
+				if not v then return print("No breeder cores detected!")
 				else compaddresslist[n]=k
 				breedercore[n] = component.proxy(compaddresslist[n])
 				print("Breeder core #" .. n .." address assigned.") 
@@ -42,7 +42,7 @@ function getAddresslist(coretype) -- Too many identical names, must set proxies 
 	pebblecore = {}
 	local n=1
 	for k,v in pairs(component.list("Pebble")) do
-			if not k then return print("No pebble bed cores detected!")
+			if not v then return print("No pebble bed cores detected!")
 			else compaddresslist[n]=k
 			pebblecore[n] = component.proxy(compaddresslist[n])
 			print("Pebble bed core #" .. n .." address assigned.") 
@@ -109,6 +109,7 @@ function checkFuelall()
 	corefuel = {}
 	corefuel.fissioncore = {}
 	corefuel.breedercore = {}
+	corefuel.pebblecore = {}
 	local function fissioncores()
 		local n=1
 		for i=1, #fissioncore do
@@ -123,6 +124,14 @@ function checkFuelall()
 		for i=1, #breedercore do
 		corefuel.breedercore[n] = breedercore[n].checkFuel()
 		print("Breeder Core #" .. n .. " fuel level is ".. corefuel.breedercore[n])
+		n=n+1
+		end
+	end
+	local function pebblecores()
+		local n=1
+		for i=1, #pebblecore do
+		corefuel.pebblecore[n] = pebblecore[n].checkFuel()
+		print("Pebble Bed Core #" .. n .. " fuel level is ".. corefuel.pebblecore[n])
 		n=n+1
 		end
 	end
@@ -200,15 +209,15 @@ end
 getAddresslist("breeder")
 getAddresslist("fission")
 getAddresslist("pebble")
-os.sleep(2)
+os.sleep(3)
 term.clear()
 setCoordsAll("breeder")
 setCoordsAll("fission")
 setCoordsAll("pebble")
-os.sleep(2)
+os.sleep(3)
+event.listen("key_down", handleEvent)
 -- Basic repeat giving some information, showing the basic functions of this program.
 while running do
-		event.listen("key_down", handleEvent)
 		term.clear()
 		getTempall()
 		os.sleep(2)
