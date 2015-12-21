@@ -171,12 +171,12 @@ function setCoordsAll(coretype)
 	
 end
 
-# local function wait(ticks) -- This actually is based on in game ticks(20 per second) 
-#  local start = os.time() -- os.time() is based on in game ticks as well
-#  while os.time() < start + ticks do -- Somehow this is broken, will use os.sleep() for less precise control for now
-#  os.sleep(0)
-#  end
-# end
+-- local function wait(ticks) -- This actually is based on in game ticks(20 per second) 
+-- local start = os.time() -- os.time() is based on in game ticks as well
+--  while os.time() < start + ticks do -- Somehow this is broken, will use os.sleep() for less precise control for now
+--  os.sleep(0)
+--  end
+-- end
 
 local quitkey = string.byte("q")
 local running = true
