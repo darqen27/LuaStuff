@@ -204,11 +204,11 @@ function handleEvent(eventID, ...)
 	end
 end
 checkAddress = component.list("Breeder")
-if checkAddress ~= {} then getAddresslist("breeder") else return print("No breeder cores detected!") end
+if (type(checkAddress) ~= "string") then getAddresslist("breeder") else return print("No breeder cores detected!") end
 checkAddress = component.list("FuelCore")
-if checkAddress ~= {} then getAddresslist("fission") else return print("No fission cores detected!") end
+if (type(checkAddress) ~= "string") then getAddresslist("fission") else return print("No fission cores detected!") end
 checkAddress = component.list("Pebble")
-if checkAddress ~= {} then getAddresslist("pebble") else return print("No pebble bed cores detected!") end
+if (type(checkAddress) ~= "string") then getAddresslist("pebble") else return print("No pebble bed cores detected!") end
 os.sleep(3)
 term.clear()
 setCoordsAll("breeder")
