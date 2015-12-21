@@ -17,7 +17,7 @@ function getAddresslist(coretype) -- Too many identical names, must set proxies 
 			fissioncore[n] = component.proxy(compaddresslist[n])
 			print("Fission core #" .. n .." address assigned.") 
 			n = n+1
-			end
+			
 		end
 	end
 	local function breedercores()
@@ -30,7 +30,7 @@ function getAddresslist(coretype) -- Too many identical names, must set proxies 
 				breedercore[n] = component.proxy(compaddresslist[n])
 				print("Breeder core #" .. n .." address assigned.") 
 				n=n+1
-				end
+				
 		end
 	end
 
@@ -44,7 +44,7 @@ function getAddresslist(coretype) -- Too many identical names, must set proxies 
 			pebblecore[n] = component.proxy(compaddresslist[n])
 			print("Pebble bed core #" .. n .." address assigned.") 
 			n=n+1
-			end
+			
 		end
 	end
 
