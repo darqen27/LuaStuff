@@ -13,7 +13,7 @@ function getAddresslist(coretype) -- Too many identical names, must set proxies 
 		fissioncore = {}
 		local n = 1
 		for k,v in pairs(component.list("FuelCore")) do
-			if not v then return print("No fission cores detected!")
+			if k ~= tostring(...) then return print("No fission cores detected!")
 			else compaddresslist[n] = k
 			fissioncore[n] = component.proxy(compaddresslist[n])
 			print("Fission core #" .. n .." address assigned.") 
@@ -27,7 +27,7 @@ function getAddresslist(coretype) -- Too many identical names, must set proxies 
 		breedercore = {}
 		local n=1
 		for k,v in pairs(component.list("Breeder")) do
-				if not v then return print("No breeder cores detected!")
+				if k ~= tostring(...) then return print("No breeder cores detected!")
 				else compaddresslist[n]=k
 				breedercore[n] = component.proxy(compaddresslist[n])
 				print("Breeder core #" .. n .." address assigned.") 
@@ -42,7 +42,7 @@ function getAddresslist(coretype) -- Too many identical names, must set proxies 
 	pebblecore = {}
 	local n=1
 	for k,v in pairs(component.list("Pebble")) do
-			if not v then return print("No pebble bed cores detected!")
+			if k ~= tostring(...) then return print("No pebble bed cores detected!")
 			else compaddresslist[n]=k
 			pebblecore[n] = component.proxy(compaddresslist[n])
 			print("Pebble bed core #" .. n .." address assigned.") 
