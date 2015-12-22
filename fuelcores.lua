@@ -1,4 +1,4 @@
-local ProgressBar = require("ProgressBar")
+local ProgressBarAPI = require("ProgressBar")
 local component = require("component")
 local term = require("term")
 local keyboard = require("keyboard")
@@ -128,8 +128,8 @@ function checkFuelall()
 		corefuel.fissioncore[n] = fissioncore[n].checkFuel()
 		corefuel.fissioncore[n] = tonumber(string.match(corefuel.fissioncore[n], "%d.%d+")) * 100
 --		print("Fission Core #" .. n .. " fuel level is ".. corefuel.fissioncore[n] .. "%")
-		ProgressBar.SetTable(name, 100, corefuel.fissioncore[n], 5, 25, 5)
-		ProgressBar.DrawToPeripheral()
+		ProgressBarAPI.SetTable(name, 100, corefuel.fissioncore[n], 5, 25, 5)
+		ProgressBarAPI.DrawToPeripheral()
 		n=n+1
 		end
 	end
@@ -141,8 +141,8 @@ function checkFuelall()
 		corefuel.breedercore[n] = breedercore[n].checkFuel()
 		corefuel.breedercore[n] = tonumber(string.match(corefuel.breedercore[n], "%d.%d+")) * 100
 --		print("Breeder Core #" .. n .. " fuel level is ".. corefuel.breedercore[n] .. "%")
-		ProgressBar.SetTable(name, 100, corefuel.breedercore[n], 5, 25, 5)
-		ProgressBar.DrawToPeripheral()
+		ProgressBarAPI.SetTable(name, 100, corefuel.breedercore[n], 5, 25, 5)
+		ProgressBarAPI.DrawToPeripheral()
 
 		n=n+1
 		end
@@ -154,8 +154,8 @@ function checkFuelall()
 		corefuel.pebblecore[n] = pebblecore[n].checkPebbleLevel()
 		corefuel.pebblecore[n] = tonumber(string.match(corefuel.pebblecore[n], "%d.%d+")) * 100
 --		print("Pebble Bed Core #" .. n .. " fuel level is ".. corefuel.pebblecore[n] .. "%")
-		ProgressBar.SetTable(name, 100, corefuel.pebblecore[n], 5, 25, 5)
-		ProgressBar.DrawToPeripheral()
+		ProgressBarAPI.SetTable(name, 100, corefuel.pebblecore[n], 5, 25, 5)
+		ProgressBarAPI.DrawToPeripheral()
 		n=n+1
 		end
 	end
@@ -243,7 +243,7 @@ setCoordsAll("fission")
 setCoordsAll("pebble")
 os.sleep(3)
 event.listen("key_down", handleEvent)
-ProgressBar.SetPeripheral()
+ProgressBarAPI.SetPeripheral()
 
 -- Basic repeat giving some information, showing the basic functions of this program.
 while running do
