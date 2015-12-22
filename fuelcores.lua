@@ -124,8 +124,8 @@ function checkFuelall()
 		local n=1
 		for i=1, #fissioncore do
 		corefuel.fissioncore[n] = fissioncore[n].checkFuel()
-		corefuel.fissioncore[n] = (corefuel.fissioncore[n] * 100)
-		print("Fission Core #" .. n .. " fuel level is ".. corefuel.fissioncore[n])
+		corefuel.fissioncore[n] = tonumber(string.match(corefuel.fissioncore[n], "%d.%d+")) * 100
+		print("Fission Core #" .. n .. " fuel level is ".. corefuel.fissioncore[n] .. "%")
 		n=n+1
 		end
 	end
@@ -134,8 +134,8 @@ function checkFuelall()
 		local n=1
 		for i=1, #breedercore do
 		corefuel.breedercore[n] = breedercore[n].checkFuel()
-		corefuel.breedercore[n] = (corefuel.breedercore[n] * 100)
-		print("Breeder Core #" .. n .. " fuel level is ".. corefuel.breedercore[n])
+		corefuel.breedercore[n] = tonumber(string.match(corefuel.breedercore[n], "%d.%d+")) * 100
+		print("Breeder Core #" .. n .. " fuel level is ".. corefuel.breedercore[n] .. "%")
 		n=n+1
 		end
 	end
@@ -143,8 +143,8 @@ function checkFuelall()
 		local n=1
 		for i=1, #pebblecore do
 		corefuel.pebblecore[n] = pebblecore[n].checkFuel()
-		corefuel.pebblecore[n] = (corefuel.pebblecore[n] * 100)
-		print("Pebble Bed Core #" .. n .. " fuel level is ".. corefuel.pebblecore[n])
+		corefuel.pebblecore[n] = tonumber(string.match(corefuel.pebblecore[n], "%d.%d+")) * 100
+		print("Pebble Bed Core #" .. n .. " fuel level is ".. corefuel.pebblecore[n] .. "%")
 		n=n+1
 		end
 	end
