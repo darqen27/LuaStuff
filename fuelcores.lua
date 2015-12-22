@@ -64,6 +64,7 @@ function getTempall()
 	coretemp = {}
 	coretemp.fissioncore = {}
 	coretemp.breedercore = {}
+	coretemp.pebblecore = {}
 	local function fissioncores()
 		local n=1
 		for i=1, #fissioncore do
@@ -80,8 +81,17 @@ function getTempall()
 		n=n+1
 		end
 	end
+	local function pebblecores()
+		local n=1
+		for i=1, #pebblecore do
+		coretemp.pebblecore[n] = pebblecore[n].getTemperature()
+		print("Pebble bed core #" .. n .. " temperature is " .. coretemp.pebblecore[n])
+		n=n+1
+		end
+	end
 fissioncores()
 breedercores()
+pebblecores()
 end
 
 function getTemp(n)
@@ -114,6 +124,7 @@ function checkFuelall()
 		local n=1
 		for i=1, #fissioncore do
 		corefuel.fissioncore[n] = fissioncore[n].checkFuel()
+		corefuel.fissioncore[n] = (corefuel.fissioncore[n] * 100)
 		print("Fission Core #" .. n .. " fuel level is ".. corefuel.fissioncore[n])
 		n=n+1
 		end
@@ -123,6 +134,7 @@ function checkFuelall()
 		local n=1
 		for i=1, #breedercore do
 		corefuel.breedercore[n] = breedercore[n].checkFuel()
+		corefuel.breedercore[n] = (corefuel.breedercore[n] * 100)
 		print("Breeder Core #" .. n .. " fuel level is ".. corefuel.breedercore[n])
 		n=n+1
 		end
@@ -131,6 +143,7 @@ function checkFuelall()
 		local n=1
 		for i=1, #pebblecore do
 		corefuel.pebblecore[n] = pebblecore[n].checkFuel()
+		corefuel.pebblecore[n] = (corefuel.pebblecore[n] * 100)
 		print("Pebble Bed Core #" .. n .. " fuel level is ".. corefuel.pebblecore[n])
 		n=n+1
 		end
@@ -138,6 +151,7 @@ function checkFuelall()
 term.clear()
 fissioncores()
 breedercores()
+pebblecores()
 end
 
 function setCoordsAll(coretype)
