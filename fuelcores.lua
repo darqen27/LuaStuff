@@ -12,40 +12,43 @@ function getAddresslist(coretype) -- Too many identical names, must set proxies 
 		local compaddresslist = {}
 		fissioncore = {}
 		local n = 1
-		for k,v in pairs(component.list("FuelCore")) do
+			for k,v in pairs(component.list("FuelCore")) do
 			compaddresslist[n] = k
 			fissioncore[n] = component.proxy(compaddresslist[n])
 			print("Fission core #" .. n .." address assigned.") 
 			n = n+1
 			
 		end
+	if fissioncore[1] == nil then print("No fission cores detected!") end
 	end
 	local function breedercores()
 		print("Getting breeder core addresses.")
 		local compaddresslist = {}
 		breedercore = {}
 		local n=1
-		for k,v in pairs(component.list("Breeder")) do				
-				compaddresslist[n]=k
-				breedercore[n] = component.proxy(compaddresslist[n])
-				print("Breeder core #" .. n .." address assigned.") 
-				n=n+1
+			for k,v in pairs(component.list("Breeder")) do				
+			compaddresslist[n]=k
+			breedercore[n] = component.proxy(compaddresslist[n])
+			print("Breeder core #" .. n .." address assigned.") 
+			n=n+1
 				
 		end
+	if breedercore[1] == nil then print("No breeder cores detected!") end
 	end
 
 	local function pebblecores()
-	print("Getting pebble bed core addresses.")
-	local compaddresslist = {}
-	pebblecore = {}
-	local n=1
-	for k,v in pairs(component.list("Pebble")) do
+		print("Getting pebble bed core addresses.")
+		local compaddresslist = {}
+		pebblecore = {}
+		local n=1
+			for k,v in pairs(component.list("Pebble")) do
 			compaddresslist[n]=k
 			pebblecore[n] = component.proxy(compaddresslist[n])
 			print("Pebble bed core #" .. n .." address assigned.") 
 			n=n+1
 			
 		end
+	if pebblecore[1] == nil then print("No pebble bed cores detected!") end
 	end
 
 	if coretype == "breeder" then breedercores()
@@ -203,12 +206,11 @@ function handleEvent(eventID, ...)
 		myEventHandlers[eventID](...)
 	end
 end
-checkAddress = component.list("Breeder")
-if (type(checkAddress) ~= "string") then getAddresslist("breeder") else return print("No breeder cores detected!") end
-checkAddress = component.list("FuelCore")
-if (type(checkAddress) ~= "string") then getAddresslist("fission") else return print("No fission cores detected!") end
-checkAddress = component.list("Pebble")
-if (type(checkAddress) ~= "string") then getAddresslist("pebble") else return print("No pebble bed cores detected!") end
+
+
+getAddresslist("fission")
+getAddresslist("breeder")
+getAddresslist("pebble")
 os.sleep(3)
 term.clear()
 setCoordsAll("breeder")
