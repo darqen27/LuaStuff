@@ -1,4 +1,4 @@
-local ProgressBarAPI = require("ProgressBar")
+ProgressBarAPI = require("ProgressBar")
 local component = require("component")
 local term = require("term")
 local keyboard = require("keyboard")
