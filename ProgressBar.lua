@@ -8,8 +8,9 @@ local FillColor = 0xD2691E
 local EmptyColor = 0x0000FF
 local TextColor = 0x000000
 
-function SetPeripheral(side)
-  if (component.screen.isOn()) then
+function SetPeripheral()
+  screen = component.screen.isOn()
+  if screen then
     monitor = component.gpu
     hasMonitor = true
   end
