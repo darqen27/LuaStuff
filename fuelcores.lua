@@ -1,9 +1,10 @@
-
+local ProgressBar = require("ProgressBar")
 local component = require("component")
 local term = require("term")
 local keyboard = require("keyboard")
 local computer = require("computer")
 local event = require("event")
+
 
 
 function getAddresslist(coretype) -- Too many identical names, must set proxies to be able to interact with all of the different core's.
@@ -122,29 +123,39 @@ function checkFuelall()
 	corefuel.pebblecore = {}
 	local function fissioncores()
 		local n=1
+		local name = ("Fission Core #" .. n)
 		for i=1, #fissioncore do
 		corefuel.fissioncore[n] = fissioncore[n].checkFuel()
 		corefuel.fissioncore[n] = tonumber(string.match(corefuel.fissioncore[n], "%d.%d+")) * 100
-		print("Fission Core #" .. n .. " fuel level is ".. corefuel.fissioncore[n] .. "%")
+--		print("Fission Core #" .. n .. " fuel level is ".. corefuel.fissioncore[n] .. "%")
+		ProgressBar.SetTable(name, 100, corefuel.fissioncore[n], 5, 25, 5)
+		ProgressBar.DrawToPeripheral()
 		n=n+1
 		end
 	end
 	
 	local function breedercores()
 		local n=1
+		local name = ("Breeder Core #".. n)
 		for i=1, #breedercore do
 		corefuel.breedercore[n] = breedercore[n].checkFuel()
 		corefuel.breedercore[n] = tonumber(string.match(corefuel.breedercore[n], "%d.%d+")) * 100
-		print("Breeder Core #" .. n .. " fuel level is ".. corefuel.breedercore[n] .. "%")
+--		print("Breeder Core #" .. n .. " fuel level is ".. corefuel.breedercore[n] .. "%")
+		ProgressBar.SetTable(name, 100, corefuel.breedercore[n], 5, 25, 5)
+		ProgressBar.DrawToPeripheral()
+
 		n=n+1
 		end
 	end
 	local function pebblecores()
 		local n=1
+		local name = ("Pebble bed core #".. n)
 		for i=1, #pebblecore do
 		corefuel.pebblecore[n] = pebblecore[n].checkPebbleLevel()
 		corefuel.pebblecore[n] = tonumber(string.match(corefuel.pebblecore[n], "%d.%d+")) * 100
-		print("Pebble Bed Core #" .. n .. " fuel level is ".. corefuel.pebblecore[n] .. "%")
+--		print("Pebble Bed Core #" .. n .. " fuel level is ".. corefuel.pebblecore[n] .. "%")
+		ProgressBar.SetTable(name, 100, corefuel.pebblecore[n], 5, 25, 5)
+		ProgressBar.DrawToPeripheral()
 		n=n+1
 		end
 	end
@@ -232,6 +243,8 @@ setCoordsAll("fission")
 setCoordsAll("pebble")
 os.sleep(3)
 event.listen("key_down", handleEvent)
+ProgressBar.SetPeripheral()
+
 -- Basic repeat giving some information, showing the basic functions of this program.
 while running do
 		term.clear()
