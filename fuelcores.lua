@@ -142,7 +142,7 @@ function checkFuelall()
 	local function pebblecores()
 		local n=1
 		for i=1, #pebblecore do
-		corefuel.pebblecore[n] = pebblecore[n].checkFuel()
+		corefuel.pebblecore[n] = pebblecore[n].checkPebbleLevel()
 		corefuel.pebblecore[n] = tonumber(string.match(corefuel.pebblecore[n], "%d.%d+")) * 100
 		print("Pebble Bed Core #" .. n .. " fuel level is ".. corefuel.pebblecore[n] .. "%")
 		n=n+1
