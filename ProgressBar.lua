@@ -77,19 +77,19 @@ function DrawBar(name, arr)
 
   for x = arr["XMin"], arr["XMax"] do
     local num = math.floor(x - arr["XMin"])
-    monitor.setCursorPos(x,y)
+    term.setCursor(x,y)
 
     if (num > fill) then
       monitor.setBackground(EmptyColor)
     end
 
     if (num == 0) then
-      monitor.write("[")
+      term.write("[")
     end
     if (x == arr["XMax"]) then
-      monitor.write("]")
+      term.write("]")
     else
-      monitor.write(" ")
+      term.write(" ")
     end
   end
 
