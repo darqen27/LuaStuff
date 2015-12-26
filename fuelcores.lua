@@ -414,10 +414,12 @@ function colorBlue(x,y,length,string)
 end
 
 function rcsTopMenu()
-	local yCur=10
+	local rcsmenuvar = {[1]={55,10,6,"R"},[2]={55,11,6,"R"},[3]={55,12,2,"R"},[4]={55,12,3," "},[5]={55,12,1,"R"},[6]={55,13,2,"R"},[7]={55,13,3," "},[8]={55,13,1,"R"},[9]={55,14,5,"R"},[10]={55,15,2,"R"},[11]={55,15,1," "},[12]={55,15,1,"R"},[13]={55,16,2,"R"},[14]={55,16,2," "},[15]={55,16,1,"R"},[16]={55,17,2,"R"},[17]={55,17,3," "},[18]={55,17,1,"R"}
+	}
+	local yCur=1
 	for i=10,17,1 do 
-	colorBlue(60,yCur,6,"R")
-	yCur=yCur+1
+		colorBlue(table.unpack(rcsmenuvar[yCur]))
+		yCur=yCur+1
 	end	
 end
 SetPeripheral()
