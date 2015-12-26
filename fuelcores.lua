@@ -10,6 +10,28 @@ local ProgressBar = {}
 local FillColor = 0xD2691E
 local EmptyColor = 0x0000FF
 local TextColor = 0xFFFFFF
+local quitkey = string.byte("q")
+local numone = string.byte("1")
+local running = true
+local myEventHandlers = setmetatable({}, { __index = function() return unknownEvent end })
+--local checkAddress = {}
+function unknownEvent()
+
+end
+
+function myEventHandlers.key_down(address, keypress, code, name)
+	if (keypress == quitkey) then running = false
+	elseif (keypress == numone) then 
+	end
+end
+
+
+function handleEvent(eventID, ...)
+	if (eventID) then
+		myEventHandlers[eventID](...)
+	end
+end
+
 
 function SetPeripheral()
   screen = component.screen.isOn()
@@ -378,28 +400,6 @@ end
 --  os.sleep(0)
 --  end
 -- end
-
-local quitkey = string.byte("q")
-local numone = string.byte("1")
-local running = true
-local myEventHandlers = setmetatable({}, { __index = function() return unknownEvent end })
-local checkAddress = {}
-function unknownEvent()
-
-end
-
-function myEventHandlers.key_down(address, keypress, code, name)
-	if (keypress == quitkey) then running = false
-	elseif (keypress == numone) then 
-	end
-end
-
-
-function handleEvent(eventID, ...)
-	if (eventID) then
-		myEventHandlers[eventID](...)
-	end
-end
 
 SetPeripheral()
 getAddresslist("fission")
