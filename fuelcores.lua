@@ -76,6 +76,7 @@ function DrawBar(name, arr)
   local y = arr["YVal"]
   local fill = math.floor((arr["XMax"] - arr["XMin"]) * (arr["Current"] / arr["Max"]))
 
+  monitor.setBackground(FillColor)
   monitor.setForeground(TextColor)
 
   for x = arr["XMin"], arr["XMax"] do
@@ -92,7 +93,6 @@ function DrawBar(name, arr)
     if (x == arr["XMax"]) then
       term.write("]")
     else
-      monitor.setBackground(FillColor)
       term.write(" ")
     end
   end
@@ -105,14 +105,19 @@ end
 function getAddresslist(coretype) -- Too many identical names, must set proxies to be able to interact with all of the different core's.
 	local function fissioncores()
 		term.clear()
+		term.setCursor(50,1)
+		monitor.setForeground(0x0000FF)
 		print("Getting fission core addresses.")
+		monitor.setForeground(0xFFFFFF)
 		local compaddresslist = {}
 		fissioncore = {}
-		local n = 1
+		local n=1
 			for k,v in pairs(component.list("FuelCore")) do
 			compaddresslist[n] = k
 			fissioncore[n] = component.proxy(compaddresslist[n])
-			print("Fission core #" .. n .." address assigned.") 
+			monitor.setForeground(0xFF0000)
+			print("Fission core #" .. n .." address assigned.")
+			monitor.setForeground(0xFFFFFF) 
 			n = n+1
 			
 		end
@@ -121,14 +126,19 @@ function getAddresslist(coretype) -- Too many identical names, must set proxies 
 	end
 	local function breedercores()
 		term.clear()
+		term.setCursor(50,1)
+		monitor.setForeground(0x0000FF)
 		print("Getting breeder core addresses.")
+		monitor.setForeground(0xFFFFFF)
 		local compaddresslist = {}
 		breedercore = {}
 		local n=1
 			for k,v in pairs(component.list("Breeder")) do				
 			compaddresslist[n]=k
 			breedercore[n] = component.proxy(compaddresslist[n])
+			monitor.setForeground(0xFF0000)
 			print("Breeder core #" .. n .." address assigned.") 
+			monitor.setForeground(0xFFFFFF) 
 			n=n+1
 				
 		end
@@ -138,14 +148,19 @@ function getAddresslist(coretype) -- Too many identical names, must set proxies 
 
 	local function pebblecores()
 		term.clear()
+		term.setCursor(50,1)
+		monitor.setForeground(0x0000FF)
 		print("Getting pebble bed core addresses.")
+		monitor.setForeground(0xFFFFFF)
 		local compaddresslist = {}
 		pebblecore = {}
 		local n=1
 			for k,v in pairs(component.list("Pebble")) do
 			compaddresslist[n]=k
 			pebblecore[n] = component.proxy(compaddresslist[n])
+			monitor.setForeground(0xFF0000)
 			print("Pebble bed core #" .. n .." address assigned.") 
+			monitor.setForeground(0xFFFFFF)
 			n=n+1
 			
 		end
@@ -226,11 +241,11 @@ function checkFuelall()
 		term.setCursor(1,1)
 		term.write("Fuel in percent.")
 		monitor.setBackground(EmptyColor)
-		term.setCursor(22,1)
-		term.write("0% [")
+		term.setCursor(23,1)
+		term.write("0% ")
 		term.setCursor(25,1)
 		monitor.setBackground(FillColor)
-		term.write("                                                  ")
+		term.write("[                                                 ")
 		term.setCursor(75,1)
 		monitor.setBackground(EmptyColor)
 		term.write("] 100%")
