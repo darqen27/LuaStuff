@@ -115,6 +115,7 @@ function getAddresslist(coretype) -- Too many identical names, must set proxies 
 			for k,v in pairs(component.list("FuelCore")) do
 			compaddresslist[n] = k
 			fissioncore[n] = component.proxy(compaddresslist[n])
+			term.setCursor(50,1)
 			monitor.setForeground(0xFF0000)
 			print("Fission core #" .. n .." address assigned.")
 			monitor.setForeground(0xFFFFFF) 
@@ -136,6 +137,7 @@ function getAddresslist(coretype) -- Too many identical names, must set proxies 
 			for k,v in pairs(component.list("Breeder")) do				
 			compaddresslist[n]=k
 			breedercore[n] = component.proxy(compaddresslist[n])
+			term.setCursor(50,1)
 			monitor.setForeground(0xFF0000)
 			print("Breeder core #" .. n .." address assigned.") 
 			monitor.setForeground(0xFFFFFF) 
@@ -158,6 +160,7 @@ function getAddresslist(coretype) -- Too many identical names, must set proxies 
 			for k,v in pairs(component.list("Pebble")) do
 			compaddresslist[n]=k
 			pebblecore[n] = component.proxy(compaddresslist[n])
+			term.setCursor(50,1)
 			monitor.setForeground(0xFF0000)
 			print("Pebble bed core #" .. n .." address assigned.") 
 			monitor.setForeground(0xFFFFFF)
