@@ -112,15 +112,16 @@ function getAddresslist(coretype) -- Too many identical names, must set proxies 
 		local compaddresslist = {}
 		fissioncore = {}
 		local n=1
+		local yCur=2
 			for k,v in pairs(component.list("FuelCore")) do
 			compaddresslist[n] = k
 			fissioncore[n] = component.proxy(compaddresslist[n])
-			term.setCursor(50,1)
+			term.setCursor(50,yCur)
 			monitor.setForeground(0xFF0000)
 			print("Fission core #" .. n .." address assigned.")
 			monitor.setForeground(0xFFFFFF) 
 			n = n+1
-			
+			yCur=yCur+1							
 		end
 	if fissioncore[1] == nil then print("No fission cores detected!") end
 	os.sleep(1)
@@ -134,18 +135,19 @@ function getAddresslist(coretype) -- Too many identical names, must set proxies 
 		local compaddresslist = {}
 		breedercore = {}
 		local n=1
+		local yCur=2
 			for k,v in pairs(component.list("Breeder")) do				
 			compaddresslist[n]=k
 			breedercore[n] = component.proxy(compaddresslist[n])
-			term.setCursor(50,1)
+			term.setCursor(50,yCur)
 			monitor.setForeground(0xFF0000)
 			print("Breeder core #" .. n .." address assigned.") 
 			monitor.setForeground(0xFFFFFF) 
 			n=n+1
-				
+			yCur=yCur+1				
 		end
 	if breedercore[1] == nil then print("No breeder cores detected!") end
-	os.sleep(1)
+	eventHandle(event.pull(1))
 	end
 
 	local function pebblecores()
@@ -157,15 +159,16 @@ function getAddresslist(coretype) -- Too many identical names, must set proxies 
 		local compaddresslist = {}
 		pebblecore = {}
 		local n=1
+		local yCur=2
 			for k,v in pairs(component.list("Pebble")) do
 			compaddresslist[n]=k
 			pebblecore[n] = component.proxy(compaddresslist[n])
-			term.setCursor(50,1)
+			term.setCursor(50,yCur)
 			monitor.setForeground(0xFF0000)
 			print("Pebble bed core #" .. n .." address assigned.") 
 			monitor.setForeground(0xFFFFFF)
 			n=n+1
-			
+			yCur=yCur+1					
 		end
 	if pebblecore[1] == nil then print("No pebble bed cores detected!") end
 	os.sleep(1)
