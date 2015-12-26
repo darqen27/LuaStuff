@@ -359,6 +359,7 @@ end
 -- end
 
 local quitkey = string.byte("q")
+local numone = string.byte("1")
 local running = true
 local myEventHandlers = setmetatable({}, { __index = function() return unknownEvent end })
 local checkAddress = {}
@@ -367,10 +368,12 @@ function unknownEvent()
 end
 
 function myEventHandlers.key_down(address, keypress, code, name)
-	if (keypress == quitkey) then
-	running = false
+	if (keypress == quitkey) then running = false
+	elseif (keypress == numone) then 
 	end
 end
+
+
 function handleEvent(eventID, ...)
 	if (eventID) then
 		myEventHandlers[eventID](...)
@@ -387,17 +390,16 @@ setCoordsAll("breeder")
 setCoordsAll("fission")
 setCoordsAll("pebble")
 os.sleep(1)
-event.listen("key_down", handleEvent)
+-- event.listen("key_down", handleEvent) This only works after the loop ends
 SetPeripheral()
 
 -- Basic repeat giving some information, showing the basic functions of this program.
 while running do
 		term.clear()
 		getTempall()
-		os.sleep(2)
-		term.clear()
+		handleEvent(event.pull(2))
 		checkFuelall()
 		print("Press q to quit")
-		os.sleep(2)
+		handleEvent(event.pull(2))
 end
 
