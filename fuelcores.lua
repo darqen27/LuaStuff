@@ -239,14 +239,14 @@ breedercores()
 pebblecores()
 end
 
-function getTemp(n)
-	coretemp={}
-	term.clear()
-	if not n then return print("Please enter a number between " .. n .. " and " .. #fissioncore) end
-	if n<=0 or n>(#fissioncore) then return print("Please enter a number between " .. n .. " and " .. #fissioncore) end 
-	coretemp[n] = fissioncore[n].getTemperature()
-	print("Core #" .. n .. " temperature is ".. coretemp[n])	
-end
+--function getTemp(n)
+--	coretemp={}
+--	term.clear()
+--	if not n then return print("Please enter a number between " .. n .. " and " .. #fissioncore) end
+--	if n<=0 or n>(#fissioncore) then return print("Please enter a number between " .. n .. " and " .. #fissioncore) end 
+--	coretemp[n] = fissioncore[n].getTemperature()
+--	print("Core #" .. n .. " temperature is ".. coretemp[n])	
+--end
 
 
 	
@@ -290,7 +290,6 @@ function checkFuelall()
 			local name = n
 			corefuel.fissioncore[n] = fissioncore[n].checkFuel()
 			corefuel.fissioncore[n] = tonumber(string.match(corefuel.fissioncore[n], "%d.%d+")) * 100
---		print("Fission Core #" .. n .. " fuel level is ".. corefuel.fissioncore[n] .. "%")
 			SetTable(name, 100, corefuel.fissioncore[n], 25, 75, yCur)
 			term.setCursor(1, yCur)
 			term.write(corename, false)
@@ -313,7 +312,6 @@ function checkFuelall()
 			local name = n
 			corefuel.breedercore[n] = breedercore[n].checkFuel()
 			corefuel.breedercore[n] = tonumber(string.match(corefuel.breedercore[n], "%d.%d+")) * 100
---		print("Breeder Core #" .. n .. " fuel level is ".. corefuel.breedercore[n] .. "%")
 			SetTable(name, 100, corefuel.breedercore[n], 25, 75, yCur)
 			term.setCursor(1, yCur)
 			term.write(corename, false)
@@ -335,7 +333,6 @@ function checkFuelall()
 			local name = n
 			corefuel.pebblecore[n] = pebblecore[n].checkPebbleLevel()
 			corefuel.pebblecore[n] = tonumber(string.match(corefuel.pebblecore[n], "%d.%d+")) * 100
---		print("Pebble Bed Core #" .. n .. " fuel level is ".. corefuel.pebblecore[n] .. "%")
 			SetTable(name, 100, corefuel.pebblecore[n], 25, 75, yCur)
 			term.setCursor(1, yCur)
 			term.write(corename, false)
@@ -399,27 +396,51 @@ end
 --  os.sleep(0)
 --  end
 -- end
+function colorRed(x,y,length,string)
+	term.setCursor(x,y)
+	monitor.setForeground(0xFF0000)
+	for i=1, length do
+		term.write(string, false)
+	end
+	monitor.setForeground(0xFFFFFF)		
+end
+function colorBlue(x,y,length,string)
+	term.setCursor(x,y)
+	monitor.setForeground(0x0000FF)
+	for i=1, length do
+		term.write(string, false)
+	end
+	monitor.setForeground(0xFFFFFF)		
+end
 
-SetPeripheral()
-getAddresslist("fission")
-getAddresslist("breeder")
-getAddresslist("pebble")
-handleEvent(event.pull(1))
-term.clear()
-setCoords("breeder")
-setCoords("fission")
-setCoords("pebble")
-handleEvent(event.pull(1))
+function rcsTopMenu()
+	local yCur=10
+	for i=10,17,1 do 
+	colorBlue(60,yCur,6,"R")
+	yCur=yCur+1
+	end	
+end
+rcsTopMenu()
+--SetPeripheral()
+--getAddresslist("fission")
+--getAddresslist("breeder")
+--getAddresslist("pebble")
+--handleEvent(event.pull(1))
+--term.clear()
+--setCoords("breeder")
+--setCoords("fission")
+--setCoords("pebble")
+handleEvent(event.pull(3))
 -- event.listen("key_down", handleEvent) This only works after the loop ends
 
 -- Basic repeat giving some information, showing the basic functions of this program.
-while running do
-		term.clear()
-		getTempall()
-		print("Press q to quit")
-		handleEvent(event.pull(2))
-		checkFuelall()
-		print("Press q to quit")
-		handleEvent(event.pull(2))
-end
+--while running do
+--		term.clear()
+--		getTempall()
+--		print("Press q to quit")
+--		handleEvent(event.pull(2))
+--		checkFuelall()
+--		print("Press q to quit")
+--		handleEvent(event.pull(2))
+--end
 
