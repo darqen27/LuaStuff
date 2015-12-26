@@ -104,6 +104,7 @@ end
 -- FuelcoresAPI
 function getAddresslist(coretype) -- Too many identical names, must set proxies to be able to interact with all of the different core's.
 	local function fissioncores()
+		term.clear()
 		print("Getting fission core addresses.")
 		local compaddresslist = {}
 		fissioncore = {}
@@ -116,8 +117,10 @@ function getAddresslist(coretype) -- Too many identical names, must set proxies 
 			
 		end
 	if fissioncore[1] == nil then print("No fission cores detected!") end
+	os.sleep(1)
 	end
 	local function breedercores()
+		term.clear()
 		print("Getting breeder core addresses.")
 		local compaddresslist = {}
 		breedercore = {}
@@ -130,9 +133,11 @@ function getAddresslist(coretype) -- Too many identical names, must set proxies 
 				
 		end
 	if breedercore[1] == nil then print("No breeder cores detected!") end
+	os.sleep(1)
 	end
 
 	local function pebblecores()
+		term.clear()
 		print("Getting pebble bed core addresses.")
 		local compaddresslist = {}
 		pebblecore = {}
@@ -145,6 +150,7 @@ function getAddresslist(coretype) -- Too many identical names, must set proxies 
 			
 		end
 	if pebblecore[1] == nil then print("No pebble bed cores detected!") end
+	os.sleep(1)
 	end
 
 	if coretype == "breeder" then breedercores()
