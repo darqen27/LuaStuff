@@ -420,8 +420,8 @@ function rcsTopMenu()
 	yCur=yCur+1
 	end	
 end
+SetPeripheral()
 rcsTopMenu()
---SetPeripheral()
 --getAddresslist("fission")
 --getAddresslist("breeder")
 --getAddresslist("pebble")
