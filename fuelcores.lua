@@ -224,51 +224,51 @@ function checkFuelall()
 	corefuel.pebblecore = {}
 	local function fissioncores()
 		local n=1
-		local x=0
+		local yCur=0
 		local corename = ("Fission Core #" .. n)
 		for i=1, #fissioncore do
 		corefuel.fissioncore[n] = fissioncore[n].checkFuel()
 		corefuel.fissioncore[n] = tonumber(string.match(corefuel.fissioncore[n], "%d.%d+")) * 100
 --		print("Fission Core #" .. n .. " fuel level is ".. corefuel.fissioncore[n] .. "%")
-		SetTable(corename, 100, corefuel.fissioncore[n], x, 25, 25)
-		term.setCursor(x, 1)
+		SetTable(corename, 100, corefuel.fissioncore[n], 25, 75, yCur)
+		term.setCursor(1, yCur)
 		term.write(corename, false)
 		DrawToPeripheral()
 		n=n+1
-		x=x+2
+		yCur=yCur+1
 		end
 	end
 	
 	local function breedercores()
 		local n=1
-		local x=0
+		local yCur=0
 		local corename = ("Breeder Core #".. n)
 		for i=1, #breedercore do
 		corefuel.breedercore[n] = breedercore[n].checkFuel()
 		corefuel.breedercore[n] = tonumber(string.match(corefuel.breedercore[n], "%d.%d+")) * 100
 --		print("Breeder Core #" .. n .. " fuel level is ".. corefuel.breedercore[n] .. "%")
-		SetTable(corename, 100, corefuel.breedercore[n], x, 25, 25)
-		term.setCursor(x, 1)
+		SetTable(corename, 100, corefuel.breedercore[n], 25, 75, yCur)
+		term.setCursor(1, yCur)
 		term.write(corename, false)
 		DrawToPeripheral()
 		n=n+1
-		x=x+2
+		yCur=yCur+1
 		end
 	end
 	local function pebblecores()
 		local n=1
-		local x=0
+		local yCur=0
 		local corename = ("Pebble bed core #".. n)
 		for i=1, #pebblecore do
 		corefuel.pebblecore[n] = pebblecore[n].checkPebbleLevel()
 		corefuel.pebblecore[n] = tonumber(string.match(corefuel.pebblecore[n], "%d.%d+")) * 100
 --		print("Pebble Bed Core #" .. n .. " fuel level is ".. corefuel.pebblecore[n] .. "%")
-		SetTable(corename, 100, corefuel.pebblecore[n], x, 25, 25)
-		term.setCursor(x, 1)
+		SetTable(corename, 100, corefuel.pebblecore[n], 25, 75, yCur)
+		term.setCursor(1, yCur)
 		term.write(corename, false)
 		DrawToPeripheral()
 		n=n+1
-		x=x+2
+		yCur=yCur+1
 		end
 	end
 term.clear()
