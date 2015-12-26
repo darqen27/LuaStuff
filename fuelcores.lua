@@ -97,7 +97,7 @@ function DrawBar(name, arr)
     end
   end
 
-  monitor.setBackground(0xFFFFFF)
+  monitor.setBackground(0x000000)
 end
 
 
@@ -228,18 +228,19 @@ function checkFuelall()
 		term.setCursor(22,1)
 		term.write("0%",false);term.setCursor(77,1);term.write("100%",false)
 		for i=1, #fissioncore do
-		local corename = ("Fission Core #" .. n)
-		corefuel.fissioncore[n] = fissioncore[n].checkFuel()
-		corefuel.fissioncore[n] = tonumber(string.match(corefuel.fissioncore[n], "%d.%d+")) * 100
+			local corename = ("Fission Core #" .. n)
+			corefuel.fissioncore[n] = fissioncore[n].checkFuel()
+			corefuel.fissioncore[n] = tonumber(string.match(corefuel.fissioncore[n], "%d.%d+")) * 100
 --		print("Fission Core #" .. n .. " fuel level is ".. corefuel.fissioncore[n] .. "%")
-		SetTable(corename, 100, corefuel.fissioncore[n], 25, 75, yCur)
-		term.clear()
-		term.setCursor(1, yCur)
-		term.write(corename, false)
-		DrawToPeripheral()
-		n=n+1
-		yCur=yCur+1
+			SetTable(corename, 100, corefuel.fissioncore[n], 25, 75, yCur)
+			term.setCursor(1, yCur)
+			term.write(corename, false)
+			DrawToPeripheral()
+			n=n+1
+			yCur=yCur+1
 		end
+		os.sleep(1)
+		term.clear()
 	end
 	
 	local function breedercores()
@@ -248,18 +249,19 @@ function checkFuelall()
 		term.setCursor(22,1)
 		term.write("0%",false);term.setCursor(77,1);term.write("100%",false)
 		for i=1, #breedercore do
-		local corename = ("Breeder Core #".. n)
-		corefuel.breedercore[n] = breedercore[n].checkFuel()
-		corefuel.breedercore[n] = tonumber(string.match(corefuel.breedercore[n], "%d.%d+")) * 100
+			local corename = ("Breeder Core #".. n)
+			corefuel.breedercore[n] = breedercore[n].checkFuel()
+			corefuel.breedercore[n] = tonumber(string.match(corefuel.breedercore[n], "%d.%d+")) * 100
 --		print("Breeder Core #" .. n .. " fuel level is ".. corefuel.breedercore[n] .. "%")
-		SetTable(corename, 100, corefuel.breedercore[n], 25, 75, yCur)
-		term.clear()
-		term.setCursor(1, yCur)
-		term.write(corename, false)
-		DrawToPeripheral()
-		n=n+1
-		yCur=yCur+1
+			SetTable(corename, 100, corefuel.breedercore[n], 25, 75, yCur)
+			term.setCursor(1, yCur)
+			term.write(corename, false)
+			DrawToPeripheral()
+			n=n+1
+			yCur=yCur+1
 		end
+		os.sleep(1)
+		term.clear()
 	end
 	local function pebblecores()
 		local n=1
@@ -267,18 +269,19 @@ function checkFuelall()
 		term.setCursor(22,1)
 		term.write("0%",false);term.setCursor(77,1);term.write("100%",false)
 		for i=1, #pebblecore do
-		local corename = ("Pebble bed core #".. n)
-		corefuel.pebblecore[n] = pebblecore[n].checkPebbleLevel()
-		corefuel.pebblecore[n] = tonumber(string.match(corefuel.pebblecore[n], "%d.%d+")) * 100
+			local corename = ("Pebble bed core #".. n)
+			corefuel.pebblecore[n] = pebblecore[n].checkPebbleLevel()
+			corefuel.pebblecore[n] = tonumber(string.match(corefuel.pebblecore[n], "%d.%d+")) * 100
 --		print("Pebble Bed Core #" .. n .. " fuel level is ".. corefuel.pebblecore[n] .. "%")
-		SetTable(corename, 100, corefuel.pebblecore[n], 25, 75, yCur)
-		term.clear()
-		term.setCursor(1, yCur)
-		term.write(corename, false)
-		DrawToPeripheral()
-		n=n+1
-		yCur=yCur+1
+			SetTable(corename, 100, corefuel.pebblecore[n], 25, 75, yCur)
+			term.setCursor(1, yCur)
+			term.write(corename, false)
+			DrawToPeripheral()
+			n=n+1
+			yCur=yCur+1
 		end
+		os.sleep(1)
+		term.clear()
 	end
 term.clear()
 fissioncores()
