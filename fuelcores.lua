@@ -355,8 +355,7 @@ end
 
 function setCoords(coretype)
 	corecoords = {}
-	local setCoords = {}
-	local function setCoords.fissioncoords()
+	local function fissioncoords()
 		corecoords.fissioncore = {}
 		local n=1
 		for i=1, #fissioncore do
@@ -366,7 +365,7 @@ function setCoords(coretype)
 			n=n+1
 		end
 	end
-	local function setCoords.breedercoords()
+	local function breedercoords()
 		corecoords.breedercore = {}
 		local n=1
 		for i=1, #breedercore do
@@ -376,7 +375,7 @@ function setCoords(coretype)
 			n=n+1
 		end
 	end
-	local function setCoords.pebblecoords()
+	local function pebblecoords()
 		corecoords.pebblecore = {}
 		local n=1
 		for i=1, #pebblecore do
@@ -386,10 +385,9 @@ function setCoords(coretype)
 			n=n+1
 		end
 	end
-
-	if coretype == "breeder" then setCoords.breedercoords()
-	elseif coretype == "fission" then setCoords.fissioncoords()
-	elseif coretype == "pebble" then setCoords.pebblecoords()
+	if coretype == "breeder" then breedercoords()
+	elseif coretype == "fission" then fissioncoords()
+	elseif coretype == "pebble" then pebblecoords()
 	else print("Invalid selection"); return
 	end
 	
