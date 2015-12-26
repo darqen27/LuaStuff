@@ -227,7 +227,7 @@ function checkFuelall()
 		local yCur=2
 		monitor.setBackground(EmptyColor)
 		term.setCursor(22,1)
-		term.write("0%",false);term.setCursor(77,1);term.write("100%",false)
+		term.write("0%");term.setCursor(77,1);term.write("100%")
 		monitor.setBackground(0x000000)
 		for i=1, #fissioncore do
 			local corename = ("Fission Core #" .. n)
@@ -252,7 +252,7 @@ function checkFuelall()
 		local yCur=2
 		monitor.setBackground(EmptyColor)
 		term.setCursor(22,1)
-		term.write("0%",false);term.setCursor(77,1);term.write("100%",false)
+		term.write("0%");term.setCursor(77,1);term.write("100%")
 		monitor.setBackground(0x000000)
 		for i=1, #breedercore do
 			local corename = ("Breeder Core #".. n)
@@ -276,7 +276,7 @@ function checkFuelall()
 		local yCur=2
 		monitor.setBackground(EmptyColor)
 		term.setCursor(22,1)
-		term.write("0%",false);term.setCursor(77,1);term.write("100%",false)
+		term.write("0%");term.setCursor(77,1);term.write("100%")
 		monitor.setBackground(0x000000)
 		for i=1, #pebblecore do
 			local corename = ("Pebble bed core #".. n)
