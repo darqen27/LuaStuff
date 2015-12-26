@@ -9,7 +9,7 @@ local monitor
 local ProgressBar = {}
 local FillColor = 0xD2691E
 local EmptyColor = 0x0000FF
-local TextColor = 0x000000
+local TextColor = 0xFFFFFF
 
 function SetPeripheral()
   screen = component.screen.isOn()
@@ -224,9 +224,9 @@ function checkFuelall()
 		corefuel.fissioncore[n] = fissioncore[n].checkFuel()
 		corefuel.fissioncore[n] = tonumber(string.match(corefuel.fissioncore[n], "%d.%d+")) * 100
 --		print("Fission Core #" .. n .. " fuel level is ".. corefuel.fissioncore[n] .. "%")
-		SetTable(corename, 100, corefuel.fissioncore[n], x, 25, 10)
+		SetTable(corename, 100, corefuel.fissioncore[n], x, 25, 25)
 		term.setCursor(x, 1)
-		io.write(corename)
+		term.write(corename, false)
 		DrawToPeripheral()
 		n=n+1
 		x=x+2
@@ -241,9 +241,9 @@ function checkFuelall()
 		corefuel.breedercore[n] = breedercore[n].checkFuel()
 		corefuel.breedercore[n] = tonumber(string.match(corefuel.breedercore[n], "%d.%d+")) * 100
 --		print("Breeder Core #" .. n .. " fuel level is ".. corefuel.breedercore[n] .. "%")
-		SetTable(corename, 100, corefuel.breedercore[n], x, 25, 10)
+		SetTable(corename, 100, corefuel.breedercore[n], x, 25, 25)
 		term.setCursor(x, 1)
-		io.write(corename)
+		term.write(corename, false)
 		DrawToPeripheral()
 		n=n+1
 		x=x+2
@@ -257,9 +257,9 @@ function checkFuelall()
 		corefuel.pebblecore[n] = pebblecore[n].checkPebbleLevel()
 		corefuel.pebblecore[n] = tonumber(string.match(corefuel.pebblecore[n], "%d.%d+")) * 100
 --		print("Pebble Bed Core #" .. n .. " fuel level is ".. corefuel.pebblecore[n] .. "%")
-		SetTable(corename, 100, corefuel.pebblecore[n], x, 25, 10)
+		SetTable(corename, 100, corefuel.pebblecore[n], x, 25, 25)
 		term.setCursor(x, 1)
-		io.write(corename)
+		term.write(corename, false)
 		DrawToPeripheral()
 		n=n+1
 		x=x+2
