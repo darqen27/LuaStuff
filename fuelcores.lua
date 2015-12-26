@@ -146,7 +146,7 @@ function getAddresslist(coretype) -- Too many identical names, must set proxies 
 			yCur=yCur+1							
 		end
 	if fissioncore[1] == nil then print("No fission cores detected!") end
-	os.sleep(1)
+	handleEvent(event.pull(1))
 	end
 	local function breedercores()
 		term.clear()
@@ -169,7 +169,7 @@ function getAddresslist(coretype) -- Too many identical names, must set proxies 
 			yCur=yCur+1				
 		end
 	if breedercore[1] == nil then print("No breeder cores detected!") end
-	eventHandle(event.pull(1))
+	handleEvent(event.pull(1))
 	end
 
 	local function pebblecores()
@@ -193,7 +193,7 @@ function getAddresslist(coretype) -- Too many identical names, must set proxies 
 			yCur=yCur+1					
 		end
 	if pebblecore[1] == nil then print("No pebble bed cores detected!") end
-	os.sleep(1)
+	handleEvent(event.pull(1))
 	end
 
 	if coretype == "breeder" then breedercores()
@@ -298,7 +298,7 @@ function checkFuelall()
 			n=n+1
 			yCur=yCur+1
 		end
-		os.sleep(3)
+		handleEvent(event.pull(3))
 		ClearTable()
 		term.clear()
 	end
@@ -321,7 +321,7 @@ function checkFuelall()
 			n=n+1
 			yCur=yCur+1
 		end
-		os.sleep(3)
+		handleEvent(event.pull(3))
 		ClearTable()
 		term.clear()
 	end
@@ -343,7 +343,7 @@ function checkFuelall()
 			n=n+1
 			yCur=yCur+1
 		end
-		os.sleep(3)
+		handleEvent(event.pull(3))
 		ClearTable()
 		term.clear()
 	end
@@ -353,9 +353,9 @@ breedercores()
 pebblecores()
 end
 
-function setCoordsAll(coretype)
+function setCoords(coretype)
 	corecoords = {}
-	local function fissioncoords()
+	local function setCoords.fissioncoords()
 		corecoords.fissioncore = {}
 		local n=1
 		for i=1, #fissioncore do
@@ -365,7 +365,7 @@ function setCoordsAll(coretype)
 			n=n+1
 		end
 	end
-	local function breedercoords()
+	local function setCoords.breedercoords()
 		corecoords.breedercore = {}
 		local n=1
 		for i=1, #breedercore do
@@ -375,7 +375,7 @@ function setCoordsAll(coretype)
 			n=n+1
 		end
 	end
-	local function pebblecoords()
+	local function setCoords.pebblecoords()
 		corecoords.pebblecore = {}
 		local n=1
 		for i=1, #pebblecore do
@@ -386,9 +386,9 @@ function setCoordsAll(coretype)
 		end
 	end
 
-	if coretype == "breeder" then breedercoords()
-	elseif coretype == "fission" then fissioncoords()
-	elseif coretype == "pebble" then pebblecoords()
+	if coretype == "breeder" then setCoords.breedercoords()
+	elseif coretype == "fission" then setCoords.fissioncoords()
+	elseif coretype == "pebble" then setCoords.pebblecoords()
 	else print("Invalid selection"); return
 	end
 	
@@ -405,12 +405,12 @@ SetPeripheral()
 getAddresslist("fission")
 getAddresslist("breeder")
 getAddresslist("pebble")
-os.sleep(1)
+handleEvent(event.pull(1))
 term.clear()
-setCoordsAll("breeder")
-setCoordsAll("fission")
-setCoordsAll("pebble")
-os.sleep(1)
+setCoords("breeder")
+setCoords("fission")
+setCoords("pebble")
+handleEvent(event.pull(1))
 -- event.listen("key_down", handleEvent) This only works after the loop ends
 
 -- Basic repeat giving some information, showing the basic functions of this program.
