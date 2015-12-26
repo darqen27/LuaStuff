@@ -76,7 +76,6 @@ function DrawBar(name, arr)
   local y = arr["YVal"]
   local fill = math.floor((arr["XMax"] - arr["XMin"]) * (arr["Current"] / arr["Max"]))
 
-  monitor.setBackground(FillColor)
   monitor.setForeground(TextColor)
 
   for x = arr["XMin"], arr["XMax"] do
@@ -93,6 +92,7 @@ function DrawBar(name, arr)
     if (x == arr["XMax"]) then
       term.write("]")
     else
+      monitor.setBackground(FillColor)
       term.write(" ")
     end
   end
@@ -224,11 +224,11 @@ function checkFuelall()
 	corefuel.pebblecore = {}
 	local function header()
 		term.setCursor(1,1)
-		term.write("Fuel level in percent.")
+		term.write("Fuel in percent.")
 		monitor.setBackground(EmptyColor)
 		term.setCursor(22,1)
 		term.write("0% [")
-		term.setCursor(26,1)
+		term.setCursor(25,1)
 		monitor.setBackground(FillColor)
 		term.write("                                                  ")
 		term.setCursor(75,1)
@@ -397,6 +397,7 @@ SetPeripheral()
 while running do
 		term.clear()
 		getTempall()
+		print("Press q to quit")
 		handleEvent(event.pull(2))
 		checkFuelall()
 		print("Press q to quit")
