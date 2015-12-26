@@ -223,13 +223,14 @@ function checkFuelall()
 	corefuel.breedercore = {}
 	corefuel.pebblecore = {}
 	local function fissioncores()
+		local cna = #fissioncore
 		local n=1
 		local yCur=2
 		monitor.setBackground(EmptyColor)
 		term.setCursor(22,1)
 		term.write("0%");term.setCursor(77,1);term.write("100%")
 		monitor.setBackground(0x000000)
-		for i=1, #fissioncore do
+		for i=1, cna do
 			local corename = ("Fission Core #" .. n)
 			local name = n
 			corefuel.fissioncore[n] = fissioncore[n].checkFuel()
@@ -248,13 +249,14 @@ function checkFuelall()
 	end
 	
 	local function breedercores()
+		local cna = #breedercore
 		local n=1
 		local yCur=2
 		monitor.setBackground(EmptyColor)
 		term.setCursor(22,1)
 		term.write("0%");term.setCursor(77,1);term.write("100%")
 		monitor.setBackground(0x000000)
-		for i=1, #breedercore do
+		for i=1, cna do
 			local corename = ("Breeder Core #".. n)
 			local name = n
 			corefuel.breedercore[n] = breedercore[n].checkFuel()
@@ -272,13 +274,14 @@ function checkFuelall()
 		term.clear()
 	end
 	local function pebblecores()
+		local cna = #pebblecore
 		local n=1
 		local yCur=2
 		monitor.setBackground(EmptyColor)
 		term.setCursor(22,1)
 		term.write("0%");term.setCursor(77,1);term.write("100%")
 		monitor.setBackground(0x000000)
-		for i=1, #pebblecore do
+		for i=1, cna do
 			local corename = ("Pebble bed core #".. n)
 			local name = n
 			corefuel.pebblecore[n] = pebblecore[n].checkPebbleLevel()
