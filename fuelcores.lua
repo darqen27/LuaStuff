@@ -218,40 +218,51 @@ function checkFuelall()
 	corefuel.pebblecore = {}
 	local function fissioncores()
 		local n=1
-		local name = ("Fission Core #" .. n)
+		local x=0
+		local corename = ("Fission Core #" .. n)
 		for i=1, #fissioncore do
 		corefuel.fissioncore[n] = fissioncore[n].checkFuel()
 		corefuel.fissioncore[n] = tonumber(string.match(corefuel.fissioncore[n], "%d.%d+")) * 100
 --		print("Fission Core #" .. n .. " fuel level is ".. corefuel.fissioncore[n] .. "%")
-		SetTable(name, 100, corefuel.fissioncore[n], 5, 25, 5)
+		SetTable(corename, 100, corefuel.fissioncore[n], x, 25, 10)
+		term.SetCursor(x, 1)
+		io.write(corename)
 		DrawToPeripheral()
 		n=n+1
+		x=x+2
 		end
 	end
 	
 	local function breedercores()
 		local n=1
-		local name = ("Breeder Core #".. n)
+		local x=0
+		local corename = ("Breeder Core #".. n)
 		for i=1, #breedercore do
 		corefuel.breedercore[n] = breedercore[n].checkFuel()
 		corefuel.breedercore[n] = tonumber(string.match(corefuel.breedercore[n], "%d.%d+")) * 100
 --		print("Breeder Core #" .. n .. " fuel level is ".. corefuel.breedercore[n] .. "%")
-		SetTable(name, 100, corefuel.breedercore[n], 5, 25, 5)
+		SetTable(corename, 100, corefuel.breedercore[n], x, 25, 10)
+		term.SetCursor(x, 1)
+		io.write(corename)
 		DrawToPeripheral()
-
 		n=n+1
+		x=x+2
 		end
 	end
 	local function pebblecores()
 		local n=1
-		local name = ("Pebble bed core #".. n)
+		local x=0
+		local corename = ("Pebble bed core #".. n)
 		for i=1, #pebblecore do
 		corefuel.pebblecore[n] = pebblecore[n].checkPebbleLevel()
 		corefuel.pebblecore[n] = tonumber(string.match(corefuel.pebblecore[n], "%d.%d+")) * 100
 --		print("Pebble Bed Core #" .. n .. " fuel level is ".. corefuel.pebblecore[n] .. "%")
-		SetTable(name, 100, corefuel.pebblecore[n], 5, 25, 5)
+		SetTable(corename, 100, corefuel.pebblecore[n], x, 25, 10)
+		term.SetCursor(x, 1)
+		io.write(corename)
 		DrawToPeripheral()
 		n=n+1
+		x=x+2
 		end
 	end
 term.clear()
