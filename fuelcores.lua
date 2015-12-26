@@ -395,7 +395,7 @@ function handleEvent(eventID, ...)
 	end
 end
 
-
+SetPeripheral()
 getAddresslist("fission")
 getAddresslist("breeder")
 getAddresslist("pebble")
@@ -406,7 +406,6 @@ setCoordsAll("fission")
 setCoordsAll("pebble")
 os.sleep(1)
 -- event.listen("key_down", handleEvent) This only works after the loop ends
-SetPeripheral()
 
 -- Basic repeat giving some information, showing the basic functions of this program.
 while running do
