@@ -355,6 +355,7 @@ end
 
 function setCoords(coretype)
 	corecoords = {}
+	local setCoords = {}
 	local function setCoords.fissioncoords()
 		corecoords.fissioncore = {}
 		local n=1
