@@ -225,8 +225,10 @@ function checkFuelall()
 	local function fissioncores()
 		local n=1
 		local yCur=2
+		monitor.setBackground(EmptyColor)
 		term.setCursor(22,1)
 		term.write("0%",false);term.setCursor(77,1);term.write("100%",false)
+		monitor.setBackground(0x000000)
 		for i=1, #fissioncore do
 			local corename = ("Fission Core #" .. n)
 			corefuel.fissioncore[n] = fissioncore[n].checkFuel()
@@ -239,15 +241,17 @@ function checkFuelall()
 			n=n+1
 			yCur=yCur+1
 		end
-		os.sleep(1)
+		os.sleep(3)
 		term.clear()
 	end
 	
 	local function breedercores()
 		local n=1
 		local yCur=2
+		monitor.setBackground(EmptyColor)
 		term.setCursor(22,1)
 		term.write("0%",false);term.setCursor(77,1);term.write("100%",false)
+		monitor.setBackground(0x000000)
 		for i=1, #breedercore do
 			local corename = ("Breeder Core #".. n)
 			corefuel.breedercore[n] = breedercore[n].checkFuel()
@@ -260,16 +264,19 @@ function checkFuelall()
 			n=n+1
 			yCur=yCur+1
 		end
-		os.sleep(1)
+		os.sleep(3)
 		term.clear()
 	end
 	local function pebblecores()
 		local n=1
 		local yCur=2
+		monitor.setBackground(EmptyColor)
 		term.setCursor(22,1)
 		term.write("0%",false);term.setCursor(77,1);term.write("100%",false)
+		monitor.setBackground(0x000000)
 		for i=1, #pebblecore do
 			local corename = ("Pebble bed core #".. n)
+			
 			corefuel.pebblecore[n] = pebblecore[n].checkPebbleLevel()
 			corefuel.pebblecore[n] = tonumber(string.match(corefuel.pebblecore[n], "%d.%d+")) * 100
 --		print("Pebble Bed Core #" .. n .. " fuel level is ".. corefuel.pebblecore[n] .. "%")
@@ -280,7 +287,7 @@ function checkFuelall()
 			n=n+1
 			yCur=yCur+1
 		end
-		os.sleep(1)
+		os.sleep(3)
 		term.clear()
 	end
 term.clear()
@@ -360,12 +367,12 @@ end
 getAddresslist("fission")
 getAddresslist("breeder")
 getAddresslist("pebble")
-os.sleep(3)
+os.sleep(1)
 term.clear()
 setCoordsAll("breeder")
 setCoordsAll("fission")
 setCoordsAll("pebble")
-os.sleep(3)
+os.sleep(1)
 event.listen("key_down", handleEvent)
 SetPeripheral()
 
