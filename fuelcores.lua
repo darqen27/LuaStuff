@@ -467,7 +467,8 @@ function rcsTopMenuSplash()
 	term.write("3.")
 	term.setCursor(57,27)
 	term.setCursorBlink(true)
-	print(term.read())
+	readstr = io.read()
+	readstr
 end
 SetPeripheral()
 rcsTopMenuSplash()
