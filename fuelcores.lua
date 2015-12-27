@@ -422,11 +422,20 @@ function colorBlue(x,y,length,string)
 	end
 	monitor.setForeground(0xFFFFFF)		
 end
+function colorGreen(x,y,length,string)
+	term.setCursor(x,y)
+	monitor.setForeground(0x006400)
+	for i=1, length do
+		term.write(string,false)
+	end
+	monitor.setForeground(0xFFFFFF)
+end
 
 function rcsTopMenu()
 	local rcsmenuvarR = {[1]={55,10,6,"R"},[2]={55,11,6,"R"},[3]={55,12,2,"R"},[4]={57,12,3," "},[5]={60,12,1,"R"},[6]={55,13,2,"R"},[7]={57,13,3," "},[8]={60,13,1,"R"},[9]={55,14,6,"R"},[10]={55,15,2,"R"},[11]={57,15,1," "},[12]={58,15,1,"R"},[13]={55,16,2,"R"},[14]={57,16,2," "},[15]={59,16,1,"R"},[16]={55,17,2,"R"},[17]={57,17,3," "},[18]={60,17,1,"R"}
 	}
 	local rcsmenuvarC = {[1]={62,10,6,"C"},[2]={62,11,6,"C"},[3]={62,12,2,"C"},[4]={62,13,2,"C"},[5]={62,14,2,"C"},[6]={62,15,2,"C"},[7]={62,16,6,"C"},[8]={62,17,6,"C"}}
+	local rcsmenuvarS = {[1]={69,10,6,"S"},[2]={69,11,6,"S"},[3]={69,12,2,"S"},[4]={69,13,6,"S"},[5]={69,14,6,"S"},[6]={69,15,2,"S"},[7]={69.16,6,"S"},[8]={69,17,6,"S"}}
 	local yCur=1
 	for i=1, #rcsmenuvarR do 
 		colorBlue(table.unpack(rcsmenuvarR[yCur]))
@@ -436,6 +445,11 @@ function rcsTopMenu()
 	for i=1, #rcsmenuvarC do
 		colorRed(table.unpack(rcsmenuvarC[yCur]))
 		yCur=yCur+1
+	end
+	local yCur=1
+	for i=1, #rcsmenuvarS do
+		colorGreen(table.unpack(rcsmenuvarS[yCur]))
+		yCUr=yCur+1
 	end
 end
 SetPeripheral()
