@@ -451,6 +451,20 @@ function rcsTopMenuSplash()
 		colorGreen(table.unpack(rcsmenuvarS[yCur]))
 		yCur=yCur+1
 	end
+	term.setCursor(55,19)
+	print("Reactor Control System")
+	term.setCursor(45,20)
+	for i=1, 40 do
+		term.write("_")
+	end
+	term.setCursor(55,21)
+	term.write("1.")
+	term.write(" Temperature monitor submenu")
+	term.setCursor(55,22)
+	term.write("2.")
+	term.write(" Remaining fuel submenu")
+	term.setCursor(55,23)
+	term.write("3.")
 end
 SetPeripheral()
 rcsTopMenuSplash()
