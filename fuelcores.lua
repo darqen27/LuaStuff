@@ -468,14 +468,18 @@ function rcsTopMenuSplash()
 	term.setCursor(57,27)
 	term.setCursorBlink(true)
 	readstr = io.read()
-	readstr
+	if readstr == "getAddresslist" then adress() elseif readstr == "checkFuelAll" then checkFuelall() else print("Invalid") end
+
 end
 SetPeripheral()
 rcsTopMenuSplash()
---getAddresslist("fission")
---getAddresslist("breeder")
---getAddresslist("pebble")
---handleEvent(event.pull(1))
+function adress()
+getAddresslist("fission")
+getAddresslist("breeder")
+getAddresslist("pebble")
+handleEvent(event.pull(1))
+end
+
 --term.clear()
 --setCoords("breeder")
 --setCoords("fission")
