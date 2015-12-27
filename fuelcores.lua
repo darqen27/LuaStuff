@@ -465,6 +465,8 @@ function rcsTopMenuSplash()
 	term.write(" Remaining fuel submenu")
 	term.setCursor(55,23)
 	term.write("3.")
+	term.setCursor(57,27)
+	term.read(print(...))
 end
 SetPeripheral()
 rcsTopMenuSplash()
