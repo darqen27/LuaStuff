@@ -431,7 +431,7 @@ function colorGreen(x,y,length,string)
 	monitor.setForeground(0xFFFFFF)
 end
 
-function rcsTopMenu()
+function rcsTopMenuSplash()
 	local rcsmenuvarR = {[1]={55,10,6,"R"},[2]={55,11,6,"R"},[3]={55,12,2,"R"},[4]={57,12,3," "},[5]={60,12,1,"R"},[6]={55,13,2,"R"},[7]={57,13,3," "},[8]={60,13,1,"R"},[9]={55,14,6,"R"},[10]={55,15,2,"R"},[11]={57,15,1," "},[12]={58,15,1,"R"},[13]={55,16,2,"R"},[14]={57,16,2," "},[15]={59,16,1,"R"},[16]={55,17,2,"R"},[17]={57,17,3," "},[18]={60,17,1,"R"}
 	}
 	local rcsmenuvarC = {[1]={62,10,6,"C"},[2]={62,11,6,"C"},[3]={62,12,2,"C"},[4]={62,13,2,"C"},[5]={62,14,2,"C"},[6]={62,15,2,"C"},[7]={62,16,6,"C"},[8]={62,17,6,"C"}}
@@ -453,7 +453,7 @@ function rcsTopMenu()
 	end
 end
 SetPeripheral()
-rcsTopMenu()
+rcsTopMenuSplash()
 --getAddresslist("fission")
 --getAddresslist("breeder")
 --getAddresslist("pebble")
