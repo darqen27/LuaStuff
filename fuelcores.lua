@@ -1,3 +1,4 @@
+--Local requirements for OpenComputers API
 local component = require("component")
 local term = require("term")
 local keyboard = require("keyboard")
@@ -14,43 +15,44 @@ local quitkey = string.byte("q")
 local numone = string.byte("1")
 local running = true
 local myEventHandlers = setmetatable({}, { __index = function() return unknownEvent end })
---local checkAddress = {}
-function unknownEvent()
+
+
+function unknownEvent() -- I handle mystery events and do nothing... Like my ex!
 
 end
 
-function myEventHandlers.key_down(address, keypress, code, name)
+function myEventHandlers.key_down(address, keypress, code, name) --Handles key_down menu navigation
 	if (keypress == quitkey) then running = false
 	elseif (keypress == numone) then 
 	end
 end
 
 
-function handleEvent(eventID, ...)
+function handleEvent(eventID, ...) -- I will mow your lawn for 5 dollars
 	if (eventID) then
 		myEventHandlers[eventID](...)
 	end
 end
 
 
-function SetPeripheral()
-  screen = component.screen.isOn()
+function SetPeripheral() -- Why do I have this here?
+  screen = component.screen.isOn() -- Is the screen on? How the hell did you get here?
   if screen then
     monitor = component.gpu
-    hasMonitor = true
+    hasMonitor = true -- Oh well, you have a screen. I guess you can do things now.
   end
 end
 
 function SetTable(name, maxVal, curVal, xmin, xmax, y)
   ProgressBar[name] = {}
-  ProgressBar[name]["Max"] = maxVal
-  ProgressBar[name]["Current"] = curVal
-  ProgressBar[name]["XMin"] = xmin
-  ProgressBar[name]["XMax"] = xmax
-  ProgressBar[name]["YVal"] = y
+  ProgressBar[name]["Max"] = maxVal -- End of the bar
+  ProgressBar[name]["Current"] = curVal -- Unable to determine this value(Current value maybe?)
+  ProgressBar[name]["XMin"] = xmin -- This is the location of the start of the bar
+  ProgressBar[name]["XMax"] = xmax -- End of the bar
+  ProgressBar[name]["YVal"] = y -- How far down from the top
 end
 
-function ClearTable()
+function ClearTable() -- Please clean up your messes!
   if (hasMonitor) then
     ProgressBar = {}
   end
@@ -358,7 +360,15 @@ function setCoords(coretype)
 		for i=1, #fissioncore do
 			corecoords.fissioncore[n]={x=0, y=0, z=0}
 			corecoords.fissioncore[n].x, corecoords.fissioncore[n].y, corecoords.fissioncore[n].z = fissioncore[n].getCoords()
-			print("Fission Core #" .. n .. " coordinates are ".. corecoords.fissioncore[n].x .. ", " .. corecoords.fissioncore[n].y .. ", " .. corecoords.fissioncore[n].z)
+			term.setCursor(55,1)
+			term.write("Fission Core #" .. n .. " coordinates are ")
+			monitor.setForeground(0xFF0000)
+			term.write(corecoords.fissioncore[n].x)
+			term.write(",")
+			term.write(corecoords.fissioncore[n].y)
+			term.write(", ")
+			term.write(corecoords.fissioncore[n].z)
+			monitor.setForeground(0xFFFFFF)
 			n=n+1
 		end
 	end
@@ -414,13 +424,19 @@ function colorBlue(x,y,length,string)
 end
 
 function rcsTopMenu()
-	local rcsmenuvar = {[1]={55,10,6,"R"},[2]={55,11,6,"R"},[3]={55,12,2,"R"},[4]={57,12,3," "},[5]={60,12,1,"R"},[6]={55,13,2,"R"},[7]={57,13,3," "},[8]={60,13,1,"R"},[9]={55,14,6,"R"},[10]={55,15,2,"R"},[11]={57,15,1," "},[12]={58,15,1,"R"},[13]={55,16,2,"R"},[14]={57,16,2," "},[15]={59,16,1,"R"},[16]={55,17,2,"R"},[17]={57,17,3," "},[18]={60,17,1,"R"}
+	local rcsmenuvarR = {[1]={55,10,6,"R"},[2]={55,11,6,"R"},[3]={55,12,2,"R"},[4]={57,12,3," "},[5]={60,12,1,"R"},[6]={55,13,2,"R"},[7]={57,13,3," "},[8]={60,13,1,"R"},[9]={55,14,6,"R"},[10]={55,15,2,"R"},[11]={57,15,1," "},[12]={58,15,1,"R"},[13]={55,16,2,"R"},[14]={57,16,2," "},[15]={59,16,1,"R"},[16]={55,17,2,"R"},[17]={57,17,3," "},[18]={60,17,1,"R"}
 	}
+	local rcsmenuvarC = {[1]={62,10,6,"C"},[2]={62,11,6,"C"},[3]={62,12,2,"C"},[4]={62,13,2,"C"},[5]={62,14,2,"C"},[6]={62,15,2,"C"},[7]={62,16,6,"C"},[8]={62,17,6,"C"}}
 	local yCur=1
-	for i=1, #rcsmenuvar do 
-		colorBlue(table.unpack(rcsmenuvar[yCur]))
+	for i=1, #rcsmenuvarR do 
+		colorBlue(table.unpack(rcsmenuvarR[yCur]))
 		yCur=yCur+1
-	end	
+	end
+	local yCur=1	
+	for i=1, #rcsmenuvarC do
+		colorRed(table.unpack(rcsmenuvarC[yCur]))
+		yCur=yCur+1
+	end
 end
 SetPeripheral()
 rcsTopMenu()
