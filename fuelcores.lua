@@ -481,6 +481,22 @@ function topMenu()
 	if readstr == "getAddresslist" then adress() elseif readstr == "checkFuelAll" then checkFuelall() else print("Invalid") end
 end
 
+function subMenuOne()
+	rcsTopMenuSplash()
+	term.setCursor(55,21)
+	term.write("1.")
+	term.write(" Hybrid reactor temperature monitoring")
+	term.setCursor(55,22)
+	term.write("2.")
+	term.write(" Breeder reactor temperature monitoring")
+	term.setCursor(55,23)
+	term.write("3.")
+	term.write(" Pebble bed reactor temperature monitoring")
+	term.setCursor(57,27)
+	term.setCursorBlink(true)
+	readstr = io.read()
+end
+
 SetPeripheral()
 topMenu()
 
