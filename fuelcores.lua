@@ -399,6 +399,12 @@ function setCoords(coretype)
 	end
 	
 end
+function adress()
+getAddresslist("fission")
+getAddresslist("breeder")
+getAddresslist("pebble")
+handleEvent(event.pull(1))
+end
 
 -- local function wait(ticks) -- This actually is based on in game ticks(20 per second) 
 -- local start = os.time() -- os.time() is based on in game ticks as well
@@ -457,6 +463,10 @@ function rcsTopMenuSplash()
 	for i=1, 40 do
 		term.write("_")
 	end
+end
+
+function topMenu()
+	rcsTopMenuSplash()
 	term.setCursor(55,21)
 	term.write("1.")
 	term.write(" Temperature monitor submenu")
@@ -469,16 +479,10 @@ function rcsTopMenuSplash()
 	term.setCursorBlink(true)
 	readstr = io.read()
 	if readstr == "getAddresslist" then adress() elseif readstr == "checkFuelAll" then checkFuelall() else print("Invalid") end
+end
 
-end
 SetPeripheral()
-rcsTopMenuSplash()
-function adress()
-getAddresslist("fission")
-getAddresslist("breeder")
-getAddresslist("pebble")
-handleEvent(event.pull(1))
-end
+topMenu()
 
 --term.clear()
 --setCoords("breeder")
