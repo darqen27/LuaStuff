@@ -245,6 +245,7 @@ function getTemp(coretype)
 		end
 		while running do
 			SetCurValue(coretemp.fissioncore[n])
+			term.clear()
 			DrawToPeripheral()
 			handleEvent(event.pull(2))	
 		end
@@ -266,6 +267,7 @@ function getTemp(coretype)
 		yCur=yCur+1
 		end
 		while running do
+			term.clear()
 			SetCurValue(coretemp.breedercore[n])
 			DrawToPeripheral()
 			handleEvent(event.pull(2))	
@@ -288,6 +290,7 @@ function getTemp(coretype)
 		yCur=yCur+1
 		end
 		while running do
+			term.clear()
 			SetCurValue(coretemp.pebblecore[n])
 			DrawToPeripheral()
 			handleEvent(event.pull(2))		
