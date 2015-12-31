@@ -248,6 +248,7 @@ function getTemp(coretype)
 			DrawToPeripheral()
 			handleEvent(event.pull(2))	
 		end
+	end
 	local function breedercores()
 		local n=1
 		local yCur=2
@@ -269,6 +270,7 @@ function getTemp(coretype)
 			DrawToPeripheral()
 			handleEvent(event.pull(2))	
 		end
+	end
 	local function pebblecores()
 		local yCur=2
 		local n=1
@@ -289,7 +291,8 @@ function getTemp(coretype)
 			SetCurValue(coretemp.pebblecore[n])
 			DrawToPeripheral()
 			handleEvent(event.pull(2))		
-		end		
+		end
+	end
 	if coretype == "fission" then fissioncores()
 		elseif coretype == "breeder" then breedercores()
 		elseif coretype == "pebble" then pebblecores()
