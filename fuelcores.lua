@@ -148,7 +148,7 @@ function getAddresslist(coretype) -- Too many identical names, must set proxies 
 			yCur=yCur+1							
 		end
 	if fissioncore[1] == nil then print("No fission cores detected!") end
-	handleEvent(event.pull(1))
+	handleEvent(event.pull(1.5))
 	end
 	local function breedercores()
 		term.clear()
@@ -171,7 +171,7 @@ function getAddresslist(coretype) -- Too many identical names, must set proxies 
 			yCur=yCur+1				
 		end
 	if breedercore[1] == nil then print("No breeder cores detected!") end
-	handleEvent(event.pull(1))
+	handleEvent(event.pull(1.5))
 	end
 
 	local function pebblecores()
@@ -195,13 +195,13 @@ function getAddresslist(coretype) -- Too many identical names, must set proxies 
 			yCur=yCur+1					
 		end
 	if pebblecore[1] == nil then print("No pebble bed cores detected!") end
-	handleEvent(event.pull(1))
+	handleEvent(event.pull(1.5))
 	end
 
 	if coretype == "breeder" then breedercores()
-	elseif coretype == "fission" then fissioncores()
-	elseif coretype == "pebble" then pebblecores()
-	else print("Invalid selection"); return
+		elseif coretype == "fission" then fissioncores()
+		elseif coretype == "pebble" then pebblecores()
+		else print("Invalid selection"); return
 	end
 end
 
@@ -541,7 +541,7 @@ function topMenu()
 	term.setCursor(57,27)
 	term.setCursorBlink(true)
 	readstr = io.read()
-	if readstr == "1" then subMenuOne() elseif readstr == "checkFuelAll" then checkFuelall() else print("Invalid") end
+	if readstr == "1" then subMenuOne() elseif readstr == "checkFuel" then checkFuel() else print("Invalid") end
 end
 
 function subMenuOne()
@@ -559,7 +559,12 @@ function subMenuOne()
 	term.setCursor(57,27)
 	term.setCursorBlink(true)
 	readstr = io.read()
-	if readstr == "1" then end
+	if readstr == "1" then getTemp("fission") 
+		elseif readstr == "2" then getTemp("breeder")
+		elseif readstr == "3" then getTemp("pebble") 
+		else print("Invalid") 
+		subMenuOne()		
+	end
 	
 end
 
