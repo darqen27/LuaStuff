@@ -15,15 +15,15 @@ local quitkey = string.byte("q")
 local numone = string.byte("1")
 local running = true
 local myEventHandlers = setmetatable({}, { __index = function() return unknownEvent end })
-
+local curmenu = "TopMenu"
 
 function unknownEvent() -- I handle mystery events and do nothing... Like my ex!
 
 end
 
 function myEventHandlers.key_down(address, keypress, code, name) --Handles key_down menu navigation
-	if (keypress == quitkey) then running = false
-	elseif (keypress == numone) then 
+	if curmenu == "quitkey" then
+		if (keypress == quitkey) then running = false end
 	end
 end
 
@@ -207,17 +207,47 @@ end
 
 
 
-function getTempall()
+function getTemp(coretype)
+	curmenu="quitkey"
 	coretemp = {}
 	coretemp.fissioncore = {}
 	coretemp.breedercore = {}
 	coretemp.pebblecore = {}
+	local function header()
+		term.setCursor(1,1)
+		term.write("Temperature in Celcius.")
+		monitor.setBackground(EmptyColor)
+		term.setCursor(23,1)
+		term.write("0C ")
+		term.setCursor(25,1)
+		monitor.setBackground(FillColor)
+		term.write("[                                                 ")
+		term.setCursor(75,1)
+		monitor.setBackground(EmptyColor)
+		term.write("] 1800C")
+		monitor.setBackground(0x000000)
+	end
 	local function fissioncores()
 		local n=1
+		local yCur=2
+		local name = n
+		header()
 		for i=1, #fissioncore do
-		coretemp.fissioncore[n] = fissioncore[n].getTemperature()
-		print("Fission Core #" .. n .. " temperature is ".. coretemp.fissioncore[n])
-		n=n+1
+			local corename = ("Fission Core #" .. n)
+			coretemp.fissioncore[n] = fissioncore[n].getTemperature()
+			SetTable(name,1800,coretemp.fissioncore[n],25,75,yCur)
+			term.setCursor(1, yCur)
+			term.write(corename, false)
+			DrawToPeripheral()
+			n=n+1
+			yCur=yCur+1
+	--		print("Fission Core #" .. n .. " temperature is ".. coretemp.fissioncore[n])
+			n=n+1
+		end
+		while running do
+			SetCurValue(coretemp.fissioncore[n])
+			DrawToPeripheral()
+			event.listen("key_down", handleEvent)
 		end
 	end
 	local function breedercores()
@@ -236,9 +266,11 @@ function getTempall()
 		n=n+1
 		end
 	end
-fissioncores()
-breedercores()
-pebblecores()
+	if coretype == "fission" then fissioncores()
+		elseif coretype == "breeder" then breedercores()
+		elseif coretype == "pebble" then pebblecores()
+		else print("Invalid")
+	end
 end
 
 --function getTemp(n)
@@ -252,17 +284,18 @@ end
 
 
 	
-function checkFuel(n)
-	corefuel={}
-	term.clear()
-	if not n then return print("Please enter a number between 1 and " .. #fissioncore) end
-	if n<=0 or n>(#fissioncore) then return print("Please enter a number between 1 and " .. #fissioncore) end 
-	corefuel[n] = fissioncore[n].checkFuel()
-	print("Core #" .. n .. " fuel level is ".. corefuel[n])
-end
+--function checkFuel(n)
+--	corefuel={}
+--	term.clear()
+--	if not n then return print("Please enter a number between 1 and " .. #fissioncore) end
+--	if n<=0 or n>(#fissioncore) then return print("Please enter a number between 1 and " .. #fissioncore) end 
+--	corefuel[n] = fissioncore[n].checkFuel()
+--	print("Core #" .. n .. " fuel level is ".. corefuel[n])
+--end
 
 	
-function checkFuelall()
+function checkFuel(coretype)
+	curmenu="quitkey"
 	corefuel = {}
 	corefuel.fissioncore = {}
 	corefuel.breedercore = {}
@@ -347,11 +380,12 @@ function checkFuelall()
 		term.clear()
 	end
 term.clear()
-fissioncores()
-breedercores()
-pebblecores()
+if coretype == "fission" then fissioncores()
+	elseif coretype == "breeder" then breedercores()
+	elseif coretype == "pebble" then pebblecores()
+	else print("Invalid")
 end
-
+end
 function setCoords(coretype)
 	corecoords = {}
 	local function fissioncoords()
@@ -443,6 +477,7 @@ function rcsTopMenuSplash()
 	local rcsmenuvarC = {[1]={62,10,6,"C"},[2]={62,11,6,"C"},[3]={62,12,2,"C"},[4]={62,13,2,"C"},[5]={62,14,2,"C"},[6]={62,15,2,"C"},[7]={62,16,6,"C"},[8]={62,17,6,"C"}}
 	local rcsmenuvarS = {[1]={69,10,6,"S"},[2]={69,11,6,"S"},[3]={69,12,2,"S"},[4]={69,13,6,"S"},[5]={69,14,6,"S"},[6]={73,15,2,"S"},[7]={69,16,6,"S"},[8]={69,17,6,"S"}}
 	local yCur=1
+	term.clear()
 	for i=1, #rcsmenuvarR do 
 		colorBlue(table.unpack(rcsmenuvarR[yCur]))
 		yCur=yCur+1
@@ -466,6 +501,7 @@ function rcsTopMenuSplash()
 end
 
 function topMenu()
+	curmenu="topMenu"
 	rcsTopMenuSplash()
 	term.setCursor(55,21)
 	term.write("1.")
@@ -478,10 +514,11 @@ function topMenu()
 	term.setCursor(57,27)
 	term.setCursorBlink(true)
 	readstr = io.read()
-	if readstr == "getAddresslist" then adress() elseif readstr == "checkFuelAll" then checkFuelall() else print("Invalid") end
+	if readstr == "1" then subMenuOne() elseif readstr == "checkFuelAll" then checkFuelall() else print("Invalid") end
 end
 
 function subMenuOne()
+	curmenu="subMenuOne"
 	rcsTopMenuSplash()
 	term.setCursor(55,21)
 	term.write("1.")
@@ -495,9 +532,12 @@ function subMenuOne()
 	term.setCursor(57,27)
 	term.setCursorBlink(true)
 	readstr = io.read()
+	if readstr == "1" then end
+	
 end
 
 SetPeripheral()
+adress()
 topMenu()
 
 --term.clear()
