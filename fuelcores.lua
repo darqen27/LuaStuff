@@ -22,7 +22,7 @@ function unknownEvent() -- I handle mystery events and do nothing... Like my ex!
 end
 
 function myEventHandlers.key_down(address, keypress, code, name) --Handles key_down menu navigation
-	if curmenu == "quitkey" then
+	if curmenu == "quitmenu" then
 		if (keypress == quitkey) then running = false end
 	end
 end
@@ -208,14 +208,14 @@ end
 
 
 function getTemp(coretype)
-	curmenu="quitkey"
+	curmenu="quitmenu"
 	coretemp = {}
 	coretemp.fissioncore = {}
 	coretemp.breedercore = {}
 	coretemp.pebblecore = {}
 	local function header()
 		term.setCursor(1,1)
-		term.write("Temperature in Celcius.")
+		term.write("Temp. in Celcius")
 		monitor.setBackground(EmptyColor)
 		term.setCursor(23,1)
 		term.write("0C ")
@@ -246,9 +246,8 @@ function getTemp(coretype)
 		while running do
 			SetCurValue(coretemp.fissioncore[n])
 			DrawToPeripheral()
-			event.listen("key_down", handleEvent)
+			handleEvent(event.pull(2))	
 		end
-	end
 	local function breedercores()
 		local n=1
 		local yCur=2
@@ -268,9 +267,8 @@ function getTemp(coretype)
 		while running do
 			SetCurValue(coretemp.breedercore[n])
 			DrawToPeripheral()
-			event.listen("key_down", handleEvent)
+			handleEvent(event.pull(2))	
 		end
-	end
 	local function pebblecores()
 		local yCur=2
 		local n=1
@@ -290,9 +288,8 @@ function getTemp(coretype)
 		while running do
 			SetCurValue(coretemp.pebblecore[n])
 			DrawToPeripheral()
-			event.listen("key_down", handleEvent)
+			handleEvent(event.pull(2))		
 		end		
-	end
 	if coretype == "fission" then fissioncores()
 		elseif coretype == "breeder" then breedercores()
 		elseif coretype == "pebble" then pebblecores()
@@ -322,7 +319,7 @@ end
 
 	
 function checkFuel(coretype)
-	curmenu="quitkey"
+	curmenu="quitmenu"
 	corefuel = {}
 	corefuel.fissioncore = {}
 	corefuel.breedercore = {}
