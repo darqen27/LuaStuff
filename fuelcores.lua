@@ -246,8 +246,8 @@ function getTemp(coretype)
 		end
 		while running do
 			local n=1
-			local name=n
 			for i=1, #fissioncore do
+				local name=n
 				SetCurValue(name,coretemp.fissioncore[n])
 				n=n+1
 			end
@@ -276,8 +276,8 @@ function getTemp(coretype)
 			term.clear()
 			header()
 			local n=1
-			local name=n
 			for i=1, #breedercore do
+				local name=n
 				SetCurValue(name,coretemp.breedercore[n])
 				n=n+1
 			end
@@ -304,8 +304,8 @@ function getTemp(coretype)
 		end
 		while running do
 			local n=1
-			local name=n
 			for i=1, #pebblecore do
+				local name=n
 				SetCurValue(name,coretemp.pebblecore[n])
 				n=n+1
 			end
