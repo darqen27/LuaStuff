@@ -246,8 +246,9 @@ function getTemp(coretype)
 		end
 		while running do
 			local n=1
+			local name=n
 			for i=1, #fissioncore do
-				SetCurValue(coretemp.fissioncore[n])
+				SetCurValue(name,coretemp.fissioncore[n])
 				n=n+1
 			end
 			DrawToPeripheral()
@@ -275,8 +276,9 @@ function getTemp(coretype)
 			term.clear()
 			header()
 			local n=1
+			local name=n
 			for i=1, #breedercore do
-				SetCurValue(coretemp.breedercore[n])
+				SetCurValue(name,coretemp.breedercore[n])
 				n=n+1
 			end
 			DrawToPeripheral()
@@ -302,8 +304,9 @@ function getTemp(coretype)
 		end
 		while running do
 			local n=1
+			local name=n
 			for i=1, #pebblecore do
-				SetCurValue(coretemp.pebblecore[n])
+				SetCurValue(name,coretemp.pebblecore[n])
 				n=n+1
 			end
 			DrawToPeripheral()
