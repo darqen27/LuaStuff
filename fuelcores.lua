@@ -231,6 +231,7 @@ function getTemp(coretype)
 		local n=1
 		local yCur=2
 		local name = n
+		term.clear()
 		header()
 		for i=1, #fissioncore do
 			local corename = ("Fission Core #" .. n)
@@ -245,7 +246,6 @@ function getTemp(coretype)
 		end
 		while running do
 			SetCurValue(coretemp.fissioncore[n])
-			term.clear()
 			DrawToPeripheral()
 			handleEvent(event.pull(2))	
 		end
@@ -254,6 +254,7 @@ function getTemp(coretype)
 		local n=1
 		local yCur=2
 		local name=n
+		term.clear()
 		header()
 		for i=1, #breedercore do
 		local corename=("Breeder core #"..n)
@@ -267,7 +268,6 @@ function getTemp(coretype)
 		yCur=yCur+1
 		end
 		while running do
-			term.clear()
 			SetCurValue(coretemp.breedercore[n])
 			DrawToPeripheral()
 			handleEvent(event.pull(2))	
@@ -277,6 +277,7 @@ function getTemp(coretype)
 		local yCur=2
 		local n=1
 		local name=n
+		term.clear()
 		header()
 		for i=1, #pebblecore do
 		local corename=("Pebble bed core #"..n)
@@ -290,7 +291,6 @@ function getTemp(coretype)
 		yCur=yCur+1
 		end
 		while running do
-			term.clear()
 			SetCurValue(coretemp.pebblecore[n])
 			DrawToPeripheral()
 			handleEvent(event.pull(2))		
