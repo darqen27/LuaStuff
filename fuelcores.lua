@@ -307,7 +307,6 @@ function getTemp(coretype)
 		while running do
 			local n=1
 			local yCur=2
-			term.clear()
 			header()
 			for i=1, #pebblecore do
 				local corename=("Pebble bed core #"..n)
