@@ -670,10 +670,11 @@ function miscMenu()
 	if readstr == 1 then 
 		elseif readstr == 2 then
 		elseif readstr == 3 then
-	else print("Invalid")
-	os.sleep(1)
-	term.clear()
-	topMenu()
+		else print("Invalid")
+		os.sleep(1)
+		term.clear()
+		topMenu()
+	end
 end
 SetPeripheral()
 adress()
