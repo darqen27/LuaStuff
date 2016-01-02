@@ -239,53 +239,68 @@ function getTemp(coretype)
 			SetTable(name,1800,coretemp.fissioncore[n],25,75,yCur)
 			term.setCursor(1, yCur)
 			term.write(corename, false)
-			DrawToPeripheral()
 	--		print("Fission Core #" .. n .. " temperature is ".. coretemp.fissioncore[n])
 			n=n+1
 			yCur=yCur+1
 		end
+		DrawToPeripheral()
 		while running do
 			local n=1
+			local yCur=2
+			term.clear()
+			header()
 			for i=1, #fissioncore do
 				local name=n
+				local corename=("Fission core #"..n)
+				coretemp.fissioncore[n]=fissioncore[n].getTemperature()
 				SetCurValue(name,coretemp.fissioncore[n])
+				term.setCursor(1, yCur)
+				term.write(corename, false)
 				n=n+1
+				yCur=yCur+1
 			end
 			DrawToPeripheral()
 			handleEvent(event.pull(2))	
 		end
 		ClearTable()
+		TopMenu()
 	end
 	local function breedercores()
 		local n=1
 		local yCur=2
-		local name=n
 		term.clear()
 		header()
 		for i=1, #breedercore do
-		local corename=("Breeder core #"..n)
-		coretemp.breedercore[n] = breedercore[n].getTemperature()
-		SetTable(name,1800,coretemp.breedercore[n],25,75,yCur)
-		term.setCursor(1, yCur)
-		term.write(corename, false)
-		DrawToPeripheral()
---		print("Breeder Core #" .. n .. " temperature is ".. coretemp.breedercore[n])
-		n=n+1
-		yCur=yCur+1
+			local name=n
+			local corename=("Breeder core #"..n)
+			coretemp.breedercore[n] = breedercore[n].getTemperature()
+			SetTable(name,1800,coretemp.breedercore[n],25,75,yCur)
+			term.setCursor(1, yCur)
+			term.write(corename, false)
+			n=n+1
+			yCur=yCur+1
 		end
+		DrawToPeripheral()
 		while running do
+			local n=1
+			local yCur=2
 			term.clear()
 			header()
-			local n=1
 			for i=1, #breedercore do
+				local corename=("Breeder core #"..n)
+				coretemp.breedercore[n]=breedercore[n].getTemperature()
 				local name=n
 				SetCurValue(name,coretemp.breedercore[n])
+				term.setCursor(1, yCur)
+				term.write(corename, false)
 				n=n+1
+				yCur=yCur+1
 			end
 			DrawToPeripheral()
 			handleEvent(event.pull(2))	
 		end
 		ClearTable()
+		TopMenu()
 	end
 	local function pebblecores()
 		local yCur=2
@@ -293,17 +308,16 @@ function getTemp(coretype)
 		term.clear()
 		header()
 		for i=1, #pebblecore do
-		local name=n
-		local corename=("Pebble bed core #"..n)
-		coretemp.pebblecore[n] = pebblecore[n].getTemperature()
-		SetTable(name,1800,coretemp.pebblecore[n],25,75,yCur)
-		term.setCursor(1, yCur)
-		term.write(corename, false)
-		DrawToPeripheral()		
---		print("Pebble bed core #" .. n .. " temperature is " .. coretemp.pebblecore[n])
-		n=n+1
-		yCur=yCur+1
+			local name=n
+			local corename=("Pebble bed core #"..n)
+			coretemp.pebblecore[n] = pebblecore[n].getTemperature()
+			SetTable(name,1800,coretemp.pebblecore[n],25,75,yCur)
+			term.setCursor(1, yCur)
+			term.write(corename, false)		
+			n=n+1
+			yCur=yCur+1
 		end
+		DrawToPeripheral()
 		while running do
 			local n=1
 			local yCur=2
@@ -322,6 +336,7 @@ function getTemp(coretype)
 			handleEvent(event.pull(2))		
 		end
 		ClearTable()
+		TopMenu()
 	end
 	if coretype == "fission" then fissioncores()
 		elseif coretype == "breeder" then breedercores()
@@ -570,8 +585,8 @@ function topMenu()
 	term.write("3.")
 	term.setCursor(57,27)
 	term.setCursorBlink(true)
-	readstr = io.read()
-	if readstr == "1" then subMenuOne() elseif readstr == "checkFuel" then checkFuel() else print("Invalid") end
+	readstr = tonumber(string.match(io.read(),"%d"))
+	if readstr == "1" then subMenuOne() elseif readstr == "2" then subMenuTwo() else print("Invalid") end
 end
 
 function subMenuOne()
@@ -598,6 +613,9 @@ function subMenuOne()
 	
 end
 
+function subMenuTwo()
+
+end
 SetPeripheral()
 adress()
 topMenu()
