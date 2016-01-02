@@ -308,17 +308,17 @@ function getTemp(coretype)
 			local n=1
 			local yCur=2
 			term.clear()
+			header()
 			for i=1, #pebblecore do
 				local corename=("Pebble bed core #"..n)
 				local name=n
 				SetCurValue(name,coretemp.pebblecore[n])
 				term.setCursor(1, yCur)
 				term.write(corename, false)
-				DrawToPeripheral()
 				n=n+1
 				yCur=yCur+1
 			end
-			header()
+			DrawToPeripheral()
 			handleEvent(event.pull(2))		
 		end
 		ClearTable()
