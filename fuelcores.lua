@@ -306,10 +306,10 @@ function getTemp(coretype)
 		end
 		while running do
 			local n=1
+			local yCur=2
 			term.clear()
 			for i=1, #pebblecore do
 				local corename=("Pebble bed core #"..n)
-				local yCur=2
 				local name=n
 				SetCurValue(name,coretemp.pebblecore[n])
 				term.setCursor(1, yCur)
