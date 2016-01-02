@@ -254,6 +254,7 @@ function getTemp(coretype)
 			DrawToPeripheral()
 			handleEvent(event.pull(2))	
 		end
+		ClearTable()
 	end
 	local function breedercores()
 		local n=1
@@ -284,6 +285,7 @@ function getTemp(coretype)
 			DrawToPeripheral()
 			handleEvent(event.pull(2))	
 		end
+		ClearTable()
 	end
 	local function pebblecores()
 		local yCur=2
@@ -304,14 +306,22 @@ function getTemp(coretype)
 		end
 		while running do
 			local n=1
+			term.clear()
 			for i=1, #pebblecore do
+				local corename=("Pebble bed core #"..n)
+				local yCur=2
 				local name=n
 				SetCurValue(name,coretemp.pebblecore[n])
+				term.setCursor(1, yCur)
+				term.write(corename, false)
 				n=n+1
+				yCur=yCur+1
 			end
+			header()
 			DrawToPeripheral()
 			handleEvent(event.pull(2))		
 		end
+		ClearTable()
 	end
 	if coretype == "fission" then fissioncores()
 		elseif coretype == "breeder" then breedercores()
