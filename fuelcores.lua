@@ -388,11 +388,11 @@ function checkFuel(coretype)
 	end
 
 	local function fissioncores()
-		local cna = #fissioncore
+	while running do
 		local n=1
 		local yCur=2
 		header()
-		for i=1, cna do
+		for i=1, #fissioncore do
 			local corename = ("Fission Core #" .. n)
 			local name = n
 			corefuel.fissioncore[n] = fissioncore[n].checkFuel()
@@ -400,21 +400,22 @@ function checkFuel(coretype)
 			SetTable(name, 100, corefuel.fissioncore[n], 25, 75, yCur)
 			term.setCursor(1, yCur)
 			term.write(corename, false)
-			DrawToPeripheral()
 			n=n+1
 			yCur=yCur+1
 		end
+		DrawToPeripheral()
 		handleEvent(event.pull(3))
+	end
 		ClearTable()
 		term.clear()
 	end
 	
 	local function breedercores()
-		local cna = #breedercore
+	while running do
 		local n=1
 		local yCur=2
 		header()
-		for i=1, cna do
+		for i=1, #breedercore do
 			local corename = ("Breeder Core #".. n)
 			local name = n
 			corefuel.breedercore[n] = breedercore[n].checkFuel()
@@ -422,20 +423,21 @@ function checkFuel(coretype)
 			SetTable(name, 100, corefuel.breedercore[n], 25, 75, yCur)
 			term.setCursor(1, yCur)
 			term.write(corename, false)
-			DrawToPeripheral()
 			n=n+1
 			yCur=yCur+1
 		end
+		DrawToPeripheral()
 		handleEvent(event.pull(3))
+	end
 		ClearTable()
 		term.clear()
 	end
 	local function pebblecores()
-		local cna = #pebblecore
+	while running do
 		local n=1
 		local yCur=2
 		header()
-		for i=1, cna do
+		for i=1, #pebblecore do
 			local corename = ("Pebble bed core #".. n)
 			local name = n
 			corefuel.pebblecore[n] = pebblecore[n].checkPebbleLevel()
@@ -443,11 +445,12 @@ function checkFuel(coretype)
 			SetTable(name, 100, corefuel.pebblecore[n], 25, 75, yCur)
 			term.setCursor(1, yCur)
 			term.write(corename, false)
-			DrawToPeripheral()
 			n=n+1
 			yCur=yCur+1
 		end
+		DrawToPeripheral()
 		handleEvent(event.pull(3))
+	end
 		ClearTable()
 		term.clear()
 	end
@@ -614,7 +617,26 @@ function subMenuOne()
 end
 
 function subMenuTwo()
-
+	curmenu="subMenuTwo"
+	rcsTopMenuSplash()
+	term.setCursor(55,21)
+	term.write("1.")
+	term.write(" Hybrid reactor fuel monitoring")
+	term.setCursor(55,22)
+	term.write("2.")
+	term.write(" Breeder reactor fuel monitoring")
+	term.setCursor(55,23)
+	term.write("3.")
+	term.write(" Pebble bed reactor fuel monitoring")
+	term.setCursor(57,27)
+	term.setCursorBlink(true)
+	readstr = tonumber(string.match(io.read(),"%d"))
+	if readstr == 1 then checkFuel("fission")
+		elseif readstr == 2 then checkFuel("breeder")
+		elseif readstr == 3 then checkFuel("pebble")
+		else print("Invalid")
+		subMenuTwo()
+	end
 end
 SetPeripheral()
 adress()
