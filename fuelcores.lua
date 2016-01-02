@@ -263,6 +263,7 @@ function getTemp(coretype)
 			handleEvent(event.pull(2))	
 		end
 		ClearTable()
+		term.clear()
 		topMenu()
 	end
 	local function breedercores()
@@ -300,6 +301,7 @@ function getTemp(coretype)
 			handleEvent(event.pull(2))	
 		end
 		ClearTable()
+		term.clear()
 		topMenu()
 	end
 	local function pebblecores()
@@ -336,6 +338,7 @@ function getTemp(coretype)
 			handleEvent(event.pull(2))		
 		end
 		ClearTable()
+		term.clear()
 		topMenu()
 	end
 	if coretype == "fission" then fissioncores()
@@ -406,8 +409,9 @@ function checkFuel(coretype)
 		DrawToPeripheral()
 		handleEvent(event.pull(3))
 	end
-		ClearTable()
-		term.clear()
+	ClearTable()
+	term.clear()
+	topMenu()
 	end
 	
 	local function breedercores()
@@ -429,8 +433,9 @@ function checkFuel(coretype)
 		DrawToPeripheral()
 		handleEvent(event.pull(3))
 	end
-		ClearTable()
-		term.clear()
+	ClearTable()
+	term.clear()
+	topMenu()
 	end
 	local function pebblecores()
 	while running do
@@ -451,8 +456,9 @@ function checkFuel(coretype)
 		DrawToPeripheral()
 		handleEvent(event.pull(3))
 	end
-		ClearTable()
-		term.clear()
+	ClearTable()
+	term.clear()
+	topMenu()	
 	end
 term.clear()
 if coretype == "fission" then fissioncores()
@@ -606,10 +612,10 @@ function subMenuOne()
 	term.write(" Pebble bed reactor temperature monitoring")
 	term.setCursor(57,27)
 	term.setCursorBlink(true)
-	readstr = io.read()
-	if readstr == "1" then getTemp("fission") 
-		elseif readstr == "2" then getTemp("breeder")
-		elseif readstr == "3" then getTemp("pebble") 
+	readstr = tonumber(string.match(io.read(),"%d"))
+	if readstr == 1 then getTemp("fission") 
+		elseif readstr == 2 then getTemp("breeder")
+		elseif readstr == 3 then getTemp("pebble") 
 		else print("Invalid") 
 		subMenuOne()		
 	end
@@ -646,7 +652,7 @@ topMenu()
 --setCoords("breeder")
 --setCoords("fission")
 --setCoords("pebble")
-handleEvent(event.pull(3))
+--handleEvent(event.pull(3))
 -- event.listen("key_down", handleEvent) This only works after the loop ends
 
 -- Basic repeat giving some information, showing the basic functions of this program.
