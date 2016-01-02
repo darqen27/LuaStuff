@@ -248,7 +248,6 @@ function getTemp(coretype)
 		while running do
 			local n=1
 			local yCur=2
-			term.clear()
 			header()
 			for i=1, #fissioncore do
 				local name=n
@@ -286,7 +285,6 @@ function getTemp(coretype)
 		while running do
 			local n=1
 			local yCur=2
-			term.clear()
 			header()
 			for i=1, #breedercore do
 				local corename=("Breeder core #"..n)
