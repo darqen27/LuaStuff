@@ -290,10 +290,10 @@ function getTemp(coretype)
 	local function pebblecores()
 		local yCur=2
 		local n=1
-		local name=n
 		term.clear()
 		header()
 		for i=1, #pebblecore do
+		local name=n
 		local corename=("Pebble bed core #"..n)
 		coretemp.pebblecore[n] = pebblecore[n].getTemperature()
 		SetTable(name,1800,coretemp.pebblecore[n],25,75,yCur)
