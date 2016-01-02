@@ -201,7 +201,7 @@ function getAddresslist(coretype) -- Too many identical names, must set proxies 
 	if coretype == "breeder" then breedercores()
 		elseif coretype == "fission" then fissioncores()
 		elseif coretype == "pebble" then pebblecores()
-		else print("Invalid selection"); return
+		else print("Invalid selection")
 	end
 end
 
@@ -515,12 +515,17 @@ function setCoords(coretype)
 	
 end
 function adress()
-getAddresslist("fission")
-getAddresslist("breeder")
-getAddresslist("pebble")
-handleEvent(event.pull(1))
+	getAddresslist("fission")
+	getAddresslist("breeder")
+	getAddresslist("pebble")
+	handleEvent(event.pull(1))
 end
-
+function coords()
+	setCoords("fission")
+	setCoords("breeder")
+	setCoords("pebble")
+	handleEvent(event.pull(1))
+end
 -- local function wait(ticks) -- This actually is based on in game ticks(20 per second) 
 -- local start = os.time() -- os.time() is based on in game ticks as well
 --  while os.time() < start + ticks do -- Somehow this is broken, will use os.sleep() for less precise control for now
@@ -592,10 +597,11 @@ function topMenu()
 	term.write(" Remaining fuel submenu")
 	term.setCursor(55,23)
 	term.write("3.")
+	term.write(" Misc. submenu")
 	term.setCursor(57,27)
 	term.setCursorBlink(true)
 	readstr = tonumber(string.match(io.read(),"%d"))
-	if readstr == 1 then subMenuOne() elseif readstr == 2 then subMenuTwo() else print("Invalid") end
+	if readstr == 1 then subMenuOne() elseif readstr == 2 then subMenuTwo() elseif readstr == 3 then miscMenu() print("Invalid") os.sleep(1) term.clear() topMenu() end
 end
 
 function subMenuOne()
@@ -617,6 +623,8 @@ function subMenuOne()
 		elseif readstr == 2 then getTemp("breeder")
 		elseif readstr == 3 then getTemp("pebble") 
 		else print("Invalid") 
+		os.sleep(1)
+		term.clear()
 		subMenuOne()		
 	end
 	
@@ -641,8 +649,31 @@ function subMenuTwo()
 		elseif readstr == 2 then checkFuel("breeder")
 		elseif readstr == 3 then checkFuel("pebble")
 		else print("Invalid")
+		os.sleep(1)
+		term.clear()
 		subMenuTwo()
 	end
+end
+
+function miscMenu()
+	curmenu="miscMenu"
+	rcsTopMenuSplash()
+	term.setCursor(55,21)
+	term.write("1.")
+	term.setCursor(55,22)
+	term.write("2.")
+	term.setCursor(55,23)
+	term.write("3.")
+	term.setCursor(57,27)
+	term.setCursorBlink(true)
+	readstr=tonumber(string.match(io.read(),"%d"))
+	if readstr == 1 then 
+		elseif readstr == 2 then
+		elseif readstr == 3 then
+	else print("Invalid")
+	os.sleep(1)
+	term.clear()
+	topMenu()
 end
 SetPeripheral()
 adress()
