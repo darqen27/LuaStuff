@@ -208,6 +208,7 @@ end
 
 
 function getTemp(coretype)
+	running = true
 	curmenu="quitmenu"
 	coretemp = {}
 	coretemp.fissioncore = {}
@@ -370,6 +371,7 @@ end
 
 	
 function checkFuel(coretype)
+	running = true
 	curmenu="quitmenu"
 	corefuel = {}
 	corefuel.fissioncore = {}
