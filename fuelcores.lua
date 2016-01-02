@@ -314,11 +314,11 @@ function getTemp(coretype)
 				SetCurValue(name,coretemp.pebblecore[n])
 				term.setCursor(1, yCur)
 				term.write(corename, false)
+				DrawToPeripheral()
 				n=n+1
 				yCur=yCur+1
 			end
 			header()
-			DrawToPeripheral()
 			handleEvent(event.pull(2))		
 		end
 		ClearTable()
