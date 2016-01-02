@@ -263,7 +263,7 @@ function getTemp(coretype)
 			handleEvent(event.pull(2))	
 		end
 		ClearTable()
-		TopMenu()
+		topMenu()
 	end
 	local function breedercores()
 		local n=1
@@ -300,7 +300,7 @@ function getTemp(coretype)
 			handleEvent(event.pull(2))	
 		end
 		ClearTable()
-		TopMenu()
+		topMenu()
 	end
 	local function pebblecores()
 		local yCur=2
@@ -336,7 +336,7 @@ function getTemp(coretype)
 			handleEvent(event.pull(2))		
 		end
 		ClearTable()
-		TopMenu()
+		topMenu()
 	end
 	if coretype == "fission" then fissioncores()
 		elseif coretype == "breeder" then breedercores()
