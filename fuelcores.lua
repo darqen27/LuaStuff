@@ -311,6 +311,7 @@ function getTemp(coretype)
 			header()
 			for i=1, #pebblecore do
 				local corename=("Pebble bed core #"..n)
+				coretemp.pebblecore[n] = pebblecore[n].getTemperature()
 				local name=n
 				SetCurValue(name,coretemp.pebblecore[n])
 				term.setCursor(1, yCur)
