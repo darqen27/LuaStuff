@@ -586,7 +586,7 @@ function topMenu()
 	term.setCursor(57,27)
 	term.setCursorBlink(true)
 	readstr = tonumber(string.match(io.read(),"%d"))
-	if readstr == "1" then subMenuOne() elseif readstr == "2" then subMenuTwo() else print("Invalid") end
+	if readstr == 1 then subMenuOne() elseif readstr == 2 then subMenuTwo() else print("Invalid") end
 end
 
 function subMenuOne()
