@@ -7,9 +7,9 @@ local cvt1 = component.proxy("cadee4ce-b9af-45ca-9869-946d1aaf3bc9")
 
 function gearSwitch()
 	local checkitems0,checkitems1,checkitems5,checkitems6=extractor.getSlot(0),extractor.getSlot(1),extractor.getSlot(5),extractor.getSlot(6)
-	if checkitems0 or checkitems1 == nil
+	if checkitems0 and checkitems1 == nil
 		then rs.setOutput(sides.south,0)
-	elseif checkitems5 or checkitems6 == nil
+	elseif checkitems5 and checkitems6 == nil
 		then rs.setOutput(sides.south,15)
 	elseif checkitems0 and checkitems1 and checkitems5 and checkitems6 == nil
 		then running = false
