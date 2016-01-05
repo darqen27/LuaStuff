@@ -6,11 +6,11 @@ local cvt1 = component.proxy("cadee4ce-b9af-45ca-9869-946d1aaf3bc9")
 
 function gearSwitch()
 	local checkitems0,checkitems3,checkitems4,checkitems5,checkitems6=extractor.getSlot(0),extractor.getSlot(3),extractor.getSlot(4),extractor.getSlot(5),extractor.getSlot(6)
-	if checkitems5 and checkitems6 == nil
+	if checkitems5, checkitems6 == nil and checkitems0 ~= nil and checkitems3, checkitems4 ~= nil 
 		then 	
 			rs.setOutput(sides.south,0)
 			print("Switching to 32x")
-	elseif checkitems5 and checkitems6 ~= nil
+	elseif checkitems5, checkitems6 ~= nil or checkitems0 ~= nil
 		then 
 			rs.setOutput(sides.south,15)
 			print("Switching to 2x")
