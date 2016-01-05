@@ -2,7 +2,24 @@ local component = require("component")
 local redstone = require("redstone")
 local sides = require("sides")
 local rs = component.redstone
-local extractor = component.extractor
+local extractor = component.Extractor
+local cvt1 = component.proxy("cadee4ce-b9af-45ca-9869-946d1aaf3bc9")
 
-
+function gearSwitch()
+	local checkitems0,checkitems1,checkitems5,checkitems6=extractor.getSlot(0),extractor.getSlot(1),extractor.getSlot(5),extractor.getSlot(6)
+	if checkitems0 or checkitems1 == nil
+		then rs.setOutput(sides.south,0)
+	elseif checkitems5 or checkitems6 == nil
+		then rs.setOutput(sides.south,15)
+	elseif checkitems0 and checkitems1 and checkitems5 and checkitems6 == nil
+		then running = false
+	end
+end
+rs.setOutput(sides.west,15)
+rs.setOutput(sides.north,0)
+while running do
+	gearSwitch()
+end
+rs.setOutput(sides.west,0)
+rs.setOutput(sides.north,15)
 
