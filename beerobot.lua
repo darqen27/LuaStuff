@@ -8,21 +8,7 @@ local running = true
 local char_space = string.byte(" ")
 
 
- chk_net = coroutine.create(
- function ()
- local event = require("event")
-	localip = wan.address
-	wan.setStrength(10)
-	wan.setWakeMessage("Wake up!")
-	print("Opening port " .. tostring(wan.open(001)))
-		while running do
-			print("Sending " .. tostring(wan.broadcast(001, "Are you there?")))
-			local _,_, from, port, _, message = event.pull(5, "modem_message")
-			print("Test message from " .. from .. "with: " .. tostring(message))
-		coroutine.yield()
-	end
-end
-)
+
 function unknownEvent()
 end
 
@@ -39,6 +25,22 @@ function anEventHandle(eID, ...)
 		myEventHandlers[eID](...)
 	end
 end
+
+ chk_net = coroutine.create(
+ function ()
+ local event = require("event")
+	localip = wan.address
+	wan.setStrength(10)
+	wan.setWakeMessage("Wake up!")
+	print("Opening port " .. tostring(wan.open(001)))
+		while running do
+			print("Sending " .. tostring(wan.broadcast(001, "Are you there?")))
+			local _,_, from, port, _, message = anEventHandle(event.pull(5, "modem_message"))
+			print("Test message from " .. from .. "with: " .. tostring(message))
+		coroutine.yield()
+	end
+end
+)
 
 repeat
 	conn = coroutine.resume(chk_net)
