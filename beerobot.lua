@@ -13,12 +13,17 @@ function check_network()
 	wan.setStrength(10)
 	wan.setWakeMessage("Are you there?")
 	print("Opening port " .. tostring(wan.open(001)))
-	print("Connecting = " tostring(wan.broadcast(001, "Are you there?")))
+	print("Connecting = " .. tostring(wan.broadcast(001, "Are you there?")))
 	local _,_, from, port, _, message = event.pull("modem_message")
 	print("Connected to " .. from .. " with test message: " .. tostring(message))
 	
 end
 
-
-check_network()
-
+local chk_net = coroutine.create( check_network()
+	if check_network() == nil
+		then print("No network found!")
+			elseif check_network() == tostring(string)
+			print("Network Connected!")
+		end
+	end)
+	
