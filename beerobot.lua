@@ -7,23 +7,26 @@ local sides = require("sides")
 
 
 
-function check_network()
+ chk_net = coroutine.create(
+ function ()
 	local event = require("event")
-    localip = wan.address
+		localip = wan.address
 	wan.setStrength(10)
-	wan.setWakeMessage("Are you there?")
+	wan.setWakeMessage("Wake up!")
 	print("Opening port " .. tostring(wan.open(001)))
-	print("Connecting = " .. tostring(wan.broadcast(001, "Are you there?")))
-	local _,_, from, port, _, message = event.pull("modem_message")
-	print("Connected to " .. from .. " with test message: " .. tostring(message))
+	print("Sending " .. tostring(wan.broadcast(001, "Are you there?")))
+	local _,_, from, port, _, message = event.pull(5, "modem_message")
+	print("Test message from " .. from .. " with test message: " .. tostring(message))
 	
 end
 
-local chk_net = coroutine.create( check_network()
-	if check_network() == nil
+repeat
+	conn = coroutine.resume(chk_net)
+	if conn ~= nil
 		then print("No network found!")
-			elseif check_network() == tostring(string)
+			os.sleep(5)	
+			elseif conn ~= tostring(string)
 			print("Network Connected!")
 		end
-	end)
+until conn ~= tostring(string)
 	
