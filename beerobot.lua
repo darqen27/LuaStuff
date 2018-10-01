@@ -8,7 +8,17 @@ local sides = require("sides")
 
 
 function check_network()
-    wan.open
+	local event = require("event")
+    localip = wan.address
+	setStrength(10)
+	setWakeMessage(Are you there?)
+	print("Opening port " .. tostring(wan.open(001)))
+	print("Connecting = " tostring(wan.broadcast(001, "Are you there?"))
+	local _,_, from, port, _, message = event.pull("modem_message")
+	print("Connected to " .. from .. " with test message: " .. tostring(message))
+	
+end
 
 
+check_network()
 
