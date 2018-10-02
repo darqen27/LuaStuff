@@ -62,7 +62,7 @@ end
 		then print("Port already open")
 	end
 end
-chk_net(port)
+chk_net(localport)
 
 function areyouthere(remoteport)
 		if whoami == "server" then return else 
@@ -87,7 +87,9 @@ function getWaypoints()
 	local waytable = setmetatable({})
 	local nav = component.navigation
 	waytable = nav.findWaypoints()
-	=waytable
+	local inspect = require("inspect")
+	local waytable = inspect()
+	print(waytable)
 end
 
 while running do	
