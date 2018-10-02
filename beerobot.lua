@@ -45,7 +45,7 @@ end
 	wan.setWakeMessage("Wake up!")
 	print("Opening port " .. tostring(wan.open(001)))
 end
-chk_net()
+chk_net
 
 function areyouthere()
 		print("Sending " .. tostring(wan.broadcast(001, "Are you there?")))	
@@ -65,6 +65,7 @@ function chk_conn()
 end
 
 while running do	
-chk_conn()
+chk_conn
+areyouthere
 os.sleep(1)
 end
