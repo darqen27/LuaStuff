@@ -84,9 +84,9 @@ function yesimhere(ad2, remoteport)
 end
 
 function getWaypoints()
-	local waytable = setmetatable({})
+	local waytable = {}
 	local nav = component.navigation
-	waytable = nav.findWaypoints()
+	table.concat(waytable) = nav.findWaypoints()
 	local inspect = require("inspect")
 	local waytable = inspect()
 	print(waytable)
