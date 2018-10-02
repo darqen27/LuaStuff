@@ -22,14 +22,14 @@ function myEventHandlers.key_down(adress, char, code, player)
 	end
 end
 
-function myEventHandlers.modem_message(ad1,ad2,from,port,dist,message, ...)
+function myEventHandlers.modem_message(ad1,ad2,port,dist,message, ...)
 	print(ad1, ad2, from, port, dist, message, ...)
 --	if message == string
 --		then
 --			print("Test message from " .. from .. "with: " .. tostring(message, ...))
 --			else
 --				print("Unknown Message: " .. tostring(message, ...))
-	end
+--	end
 end
 
 
@@ -56,7 +56,8 @@ end
 
 
 function chk_conn()
-	eventHandle(event.pull()) 
+	conn = eventHandle(event.pull()) 
+	print(conn)
 		if conn ~= string
 			then print("No network found!")	
 				elseif conn == string
