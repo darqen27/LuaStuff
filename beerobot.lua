@@ -7,6 +7,7 @@ local running = true
 local char_space = string.byte(" ")
 local wan = component.modem
 local event = require("event")
+local whoami = "server"
 
 
 function unknownEvent()
@@ -27,7 +28,7 @@ function myEventHandlers.modem_message(ad1,ad2,port,dist,message, ...)
 		if string.find(message, "Are you there?")
 				then
 					print("Robot Alive!")
-					yesimhere(ad2, port, message)
+					yesimhere(ad2, port)
 						elseif string.find(message, "Yes I am here.")
 							then print("Response") 
 		end
@@ -62,12 +63,15 @@ end
 chk_net()
 
 function areyouthere()
+		if whoami = "server" then return else 
 		print("Sending " .. tostring(wan.broadcast(001, "Are you there?")))	
 		os.sleep(1)
+		end
 end
 
 function yesimhere(ad2, port)
 	print("Responding " .. tostring(wan.send(ad2, port, "Yes I am here.")))
+	os.sleep(1)
 end
 
 while running do	
