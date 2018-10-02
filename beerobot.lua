@@ -7,7 +7,7 @@ local running = true
 local char_space = string.byte(" ")
 local wan = component.modem
 local event = require("event")
-local whoami = "server"
+local whoami = "robot"
 local port = "101"
 
 function unknownEvent()
@@ -71,7 +71,8 @@ function areyouthere(port)
 end
 
 function yesimhere(ad2, port)
-	print(ad2, port)
+	local message = "Yes I am here."
+	--print(ad2, port)
 	print("Signal Strength: " .. wan.getStrength())
 	print("Responding")
 		if wan.send(ad2, port, message) == true then
