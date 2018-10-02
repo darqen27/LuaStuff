@@ -83,8 +83,16 @@ function yesimhere(ad2, remoteport)
 	--os.sleep(1)
 end
 
+function getWaypoints()
+	local waytable = setmetatable({})
+	local nav = component.navigation
+	waytable = nav.findWaypoints()
+	=waytable
+end
+
 while running do	
-areyouthere(remoteport)
+getWaypoints()
+--areyouthere(remoteport)
 eventHandle(event.pull(20))
---os.sleep(1)
+os.sleep(1)
 end
