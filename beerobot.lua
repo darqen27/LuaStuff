@@ -22,12 +22,13 @@ function myEventHandlers.key_down(adress, char, code, player)
 	end
 end
 
-function myEventHandlers.modem_message(_,_,from,port,_,message, ...)
-	if message == string
-		then
-			print("Test message from " .. from .. "with: " .. tostring(message, ...))
-			else
-				print("Unknown Message" .. tostring(message, ...))
+function myEventHandlers.modem_message(ad1,ad2,from,port,dist,message, ...)
+	print(ad1, ad2, from, port, dist, message, ...)
+--	if message == string
+--		then
+--			print("Test message from " .. from .. "with: " .. tostring(message, ...))
+--			else
+--				print("Unknown Message: " .. tostring(message, ...))
 	end
 end
 
