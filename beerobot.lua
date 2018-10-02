@@ -61,13 +61,12 @@ function chk_conn()
 		if conn ~= string
 			then print("No network found!")	
 				elseif conn == string
-				then print("Network Connected!")
-					else 
+				then print("Network Connected!") 
 		end
 end
 
 while running do	
 chk_conn()
 areyouthere()
-os.sleep(1)
+eventHandle(event.pull(1))
 end
