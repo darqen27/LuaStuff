@@ -5,7 +5,8 @@ local component = require("component")
 --local sides = require("sides")
 local running = true
 local char_space = string.byte(" ")
-
+local wan = component.modem
+local event = require("event")
 
 
 function unknownEvent()
@@ -38,29 +39,27 @@ function anEventHandle(eID, ...)
 end
 
  function chk_net()
- 
- local wan = component.modem
- local event = require("event")
 	localip = wan.address
 	wan.setStrength(10)
 	wan.setWakeMessage("Wake up!")
 	print("Opening port " .. tostring(wan.open(001)))
-	function areyouthere()
-		print("Sending " .. tostring(wan.broadcast(001, "Are you there?")))
-		anEventHandle(event.pull(5))	
-	end
 end
 chk_net()
 
+function areyouthere()
+		print("Sending " .. tostring(wan.broadcast(001, "Are you there?")))
+		anEventHandle(event.pull(5))	
+end
+
 
 function chk_conn()
-	local conn = chk_net.areyouthere() 
-	print(tostring(conn))
-	if conn ~= string
-		then print("No network found!")	
-			elseif conn == string
-			then print("Network Connected!")
-	end
+	conn(string) = areyouthere()  
+		print(tostring(conn))
+		if conn ~= string
+			then print("No network found!")	
+				elseif conn == string
+				then print("Network Connected!")
+		end
 end
 
 while running do	
