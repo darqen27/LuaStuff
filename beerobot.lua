@@ -14,7 +14,7 @@ end
 
 local myEventHandlers = setmetatable({}, { __index = function() return unknownEvent end })
 
-function myEventHandlers.key_up(adress, char, code, player)
+function myEventHandlers.key_down(adress, char, code, player)
 	if (char == char_space) then
 		print("SPACE BAR")
 		running = false
@@ -22,6 +22,7 @@ function myEventHandlers.key_up(adress, char, code, player)
 end
 
 function myEventHandlers.modem_message(eID,_,_,from,port,_,message, ...)
+	print(tostring(eID))
 	if tostring(eID) == "modem_message"
 		then
 			print("Test message from " .. from .. "with: " .. tostring(message, ...))
@@ -33,7 +34,7 @@ end
 
 	
 			
-function anEventHandle(eID, ...)
+function eventHandle(eID, ...)
 	if (eID) then
 		myEventHandlers[eID](...)
 	end
@@ -54,7 +55,7 @@ end
 
 function chk_conn()
 	--local conn = setmetatable({})
-	anEventHandle(event.pull()) 
+	eventHandle(event.pull()) 
 		conn = eID
 		print(tostring(conn))
 		if conn ~= string
