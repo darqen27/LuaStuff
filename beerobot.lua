@@ -53,7 +53,7 @@ end
 
 
 function chk_conn()
-	local conn = setmetatable({},)
+	local conn = setmetatable({})
 	conn = anEventHandle(event.pull())  
 		print(tostring(conn))
 		if conn ~= string
