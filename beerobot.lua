@@ -24,6 +24,12 @@ end
 
 function myEventHandlers.modem_message(ad1,ad2,port,dist,message, ...)
 	print(ad1, ad2, port, dist, message, ...)
+	function chk_conn()
+	print(message)
+		if message == string
+				then print("Network Connected!") 
+		end
+end
 --	if message == string
 --		then
 --			print("Test message from " .. from .. "with: " .. tostring(message, ...))
@@ -55,18 +61,10 @@ function areyouthere()
 end
 
 
-function chk_conn()
-	eventHandle(event.pull()) 
-	print(myEventHandlers.modem_message.message)
-		if myEventHandlers.modem_message.message ~= string
-			then print("No network found!")	
-				elseif myEventHandlers.modem_message.message == string
-				then print("Network Connected!") 
-		end
-end
+
 
 while running do	
-chk_conn()
+--chk_conn()
 areyouthere()
 eventHandle(event.pull(1))
 end
