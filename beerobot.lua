@@ -24,10 +24,11 @@ end
 
 function myEventHandlers.modem_message(ad1,ad2,port,dist,message, ...)
 	print(ad1, ad2, port, dist, message, ...)
-	function chk_conn()
 	print(message)
 		if message == string
-				then print("Network Connected!") 
+				then 
+				areyouthere()
+				print("Network Connected!") 
 		end
 end
 --	if message == string
@@ -64,7 +65,5 @@ end
 
 
 while running do	
-myEventHandlers.modem_message.chk_conn()
-areyouthere()
 eventHandle(event.pull(5))
 end
