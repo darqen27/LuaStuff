@@ -67,7 +67,7 @@ chk_net(port)
 function areyouthere(remoteport)
 		if whoami == "server" then return else 
 		print("Sending " .. tostring(wan.broadcast(remoteport, "Are you there?")))	
-		os.sleep(1)
+		--os.sleep(1)
 		end
 end
 
@@ -80,11 +80,11 @@ function yesimhere(ad2, remoteport)
 		print("Message sent, on port: "..remoteport.."\nto adress: "..ad2.."\nwith message: "..message)
 		else print("\nmessage failed!")
 		end
-	os.sleep(1)
+	--os.sleep(1)
 end
 
 while running do	
 areyouthere(remoteport)
 eventHandle(event.pull(20))
-os.sleep(1)
+--os.sleep(1)
 end
