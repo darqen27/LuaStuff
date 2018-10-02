@@ -64,7 +64,7 @@ end
 
 
 while running do	
---chk_conn()
+myEventHandlers.modem_message.chk_conn()
 areyouthere()
-eventHandle(event.pull(1))
+eventHandle(event.pull(5))
 end
