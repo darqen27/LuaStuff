@@ -42,19 +42,26 @@ end
 	wan.setStrength(10)
 	wan.setWakeMessage("Wake up!")
 	print("Opening port " .. tostring(wan.open(001)))
+	function areyouthere()
 		while running do
 			print("Sending " .. tostring(wan.broadcast(001, "Are you there?")))
 			anEventHandle(event.pull(5))
+		end
 	end
 end
 
+conn = chk_net 
+return conn
 
-repeat
-	conn = chk_net return chk_net
+function chk_conn(conn)
 	if conn ~= tostring(string)
 		then print("No network found!")	
 			elseif conn == tostring(string)
 			then print("Network Connected!")
-		end
-until conn == tostring(string)
+	end
+end
+
 	
+repeat
+	chk_conn
+until running = false
