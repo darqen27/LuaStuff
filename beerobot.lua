@@ -10,6 +10,8 @@ local event = require("event")
 local whoami = "robot"
 local localport = 102
 local remoteport = 101
+local waytable = setmetatable({}, {}, {})
+local nav = component.navigation
 
 function unknownEvent()
 end
@@ -84,8 +86,6 @@ function yesimhere(ad2, remoteport)
 end
 
 function getWaypoints()
-	local waytable = setmetatable({}, {}, {})
-	local nav = component.navigation
 	waytable = table.concat(nav.findWaypoints())
 	--local inspect = require("inspect")
 	--local waytable = inspect()
