@@ -8,7 +8,8 @@ local char_space = string.byte(" ")
 local wan = component.modem
 local event = require("event")
 local whoami = "robot"
-local port = 101
+local localport = 102
+local remoteport = 101
 
 function unknownEvent()
 end
@@ -23,12 +24,12 @@ function myEventHandlers.key_down(adress, char, code, player)
 	end
 end
 
-function myEventHandlers.modem_message(ad1,ad2,port,dist,message, ...)
-	print(ad1, ad2, port, dist, message, ...)
+function myEventHandlers.modem_message(ad1,ad2,localport,dist,message, ...)
+	print(ad1, ad2, localport, dist, message, ...)
 		if string.find(message, "Are you there?")
 				then
 					print("Robot Alive!")
-					yesimhere(ad2, port)
+					yesimhere(ad2, remoteport)
 						elseif string.find(message, "Yes I am here.")
 							then print("Response") 
 		end
@@ -51,39 +52,39 @@ function eventHandle(eID, ...)
 	end
 end
 
- function chk_net(port)
+ function chk_net(localport)
 	localip = wan.address
 	print("I am at address: " .. tostring(localip))
 	wan.setStrength(10)
 	wan.setWakeMessage("Wake up!")
 	print("Opening port ")
-	if wan.open(port) == false 
+	if wan.open(localport) == false 
 		then print("Port already open")
 	end
 end
 chk_net(port)
 
-function areyouthere(port)
+function areyouthere(remoteport)
 		if whoami == "server" then return else 
-		print("Sending " .. tostring(wan.broadcast(port, "Are you there?")))	
+		print("Sending " .. tostring(wan.broadcast(remoteport, "Are you there?")))	
 		os.sleep(1)
 		end
 end
 
-function yesimhere(ad2, port)
+function yesimhere(ad2, remoteport)
 	local message = "Yes I am here."
-	--print(ad2, port)
+	--print(ad2, remoteport)
 	print("Signal Strength: " .. wan.getStrength())
 	print("Responding")
-		if wan.send(ad2, port, message) == true then
-		print("Message sent, on port: "..port.."\nto adress: "..ad2.."\nwith message: "..message)
+		if wan.send(ad2, remoteport, message) == true then
+		print("Message sent, on port: "..remoteport.."\nto adress: "..ad2.."\nwith message: "..message)
 		else print("\nmessage failed!")
 		end
 	os.sleep(1)
 end
 
 while running do	
-areyouthere(port)
+areyouthere(remoteport)
 eventHandle(event.pull(20))
 os.sleep(1)
 end
