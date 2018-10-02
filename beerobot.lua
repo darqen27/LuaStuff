@@ -56,9 +56,9 @@ end
 
 
 function chk_conn()
-	conn = eventHandle(event.pull()) 
-	print(conn)
-		if conn ~= string
+	eventHandle(event.pull()) 
+	print(myEventHandlers.modem_message)
+		if myEventHandlers.modem_message ~= string
 			then print("No network found!")	
 				elseif conn == string
 				then print("Network Connected!") 
