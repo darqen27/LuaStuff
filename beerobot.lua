@@ -37,7 +37,7 @@ end
 --			else
 --				print("Unknown Message: " .. tostring(message, ...))
 --	end
-end
+
 
 
 	
@@ -53,7 +53,10 @@ end
 	localip = wan.address
 	wan.setStrength(10)
 	wan.setWakeMessage("Wake up!")
-	print("Opening port " .. tostring(wan.open(001)))
+	print("Opening port ")
+	if tostring(wan.open(001)) == false 
+		then print("Port already open")
+	end
 end
 chk_net()
 
