@@ -76,8 +76,9 @@ function yesimhere(ad2, port)
 	print("Signal Strength: " .. wan.getStrength())
 	print("Responding")
 		if wan.send(ad2, port, message) == true then
-		print("Message sent, on port: "..port.."\nto adress: "..ad2.."\nwith message: "..message)
-		else print("\nmessage failed!")
+			print("Message sent, on port: "..port.."\nto adress: "..ad2.."\nwith message: "..message)
+			else print("\nmessage failed!")
+		end
 	os.sleep(1)
 end
 
