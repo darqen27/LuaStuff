@@ -1,9 +1,8 @@
 local component = require("component")
 --local robot_api = require("robot") Robot API commented out during testing
-local inet = component.internet
+--local inet = component.internet
 --local i_ctrl = component.inventory_controller This one too
-local wan = component.modem
-local sides = require("sides")
+--local sides = require("sides")
 local running = true
 local char_space = string.byte(" ")
 
@@ -14,20 +13,30 @@ end
 
 local myEventHandlers = setmetatable({}, { __index = function() return unknownEvent end })
 
-function myEventHandlers.key_up(char)
+function myEventHandlers.key_up(adress, char, code, playerName)
 	if (char == char_space) then
 		running = false
 	end
 end
 
+function myEventHandlers.modem_message(_,_,from,port,_,message, ...)
+	if message == "modem_message"
+		then
+			print("Test message from " .. from .. "with: " .. tostring(message))
+			else
+				print("Unknown Message" .. tostring(message))
+	end
+end
+	
+			
 function anEventHandle(eID, ...)
 	if (eID) then
 		myEventHandlers[eID](...)
 	end
 end
 
- chk_net = coroutine.create(
- function ()
+ function chk_net()
+ local wan = component.modem
  local event = require("event")
 	localip = wan.address
 	wan.setStrength(10)
@@ -35,18 +44,15 @@ end
 	print("Opening port " .. tostring(wan.open(001)))
 		while running do
 			print("Sending " .. tostring(wan.broadcast(001, "Are you there?")))
-			local _,_, from, port, _, message = anEventHandle(event.pull(5, "modem_message"))
-			print("Test message from " .. from .. "with: " .. tostring(message))
-		coroutine.yield()
+			anEventHandle(event.pull(5))
 	end
 end
-)
+
 
 repeat
-	conn = coroutine.resume(chk_net)
+	conn = chk_net return chk_net
 	if conn ~= tostring(string)
-		then print("No network found!")
-			os.sleep(5)	
+		then print("No network found!")	
 			elseif conn == tostring(string)
 			then print("Network Connected!")
 		end
