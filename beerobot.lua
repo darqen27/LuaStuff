@@ -36,6 +36,7 @@ end
 			
 function eventHandle(eID, ...)
 	if (eID) then
+		print(eID)
 		myEventHandlers[eID](...)
 	end
 end
@@ -54,10 +55,7 @@ end
 
 
 function chk_conn()
-	--local conn = setmetatable({})
 	eventHandle(event.pull()) 
-		conn = eID
-		print(tostring(conn))
 		if conn ~= string
 			then print("No network found!")	
 				elseif conn == string
