@@ -15,6 +15,7 @@ end
 local myEventHandlers = setmetatable({}, { __index = function() return unknownEvent end })
 
 function myEventHandlers.key_down(adress, char, code, player)
+	print(tostring(char))
 	if (char == char_space) then
 		print("SPACE BAR")
 		running = false
