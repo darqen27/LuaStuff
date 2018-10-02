@@ -16,6 +16,7 @@ local myEventHandlers = setmetatable({}, { __index = function() return unknownEv
 
 function myEventHandlers.key_up(adress, char, code, playerName)
 	if (char == char_space) then
+		print("SPACE BAR")
 		running = false
 	end
 end
@@ -47,18 +48,19 @@ end
 chk_net()
 
 function areyouthere()
-		print("Sending " .. tostring(wan.broadcast(001, "Are you there?")))
-		anEventHandle(event.pull(5))	
+		print("Sending " .. tostring(wan.broadcast(001, "Are you there?")))	
 end
 
 
 function chk_conn()
-	conn(string) = areyouthere()  
+	local conn = setmetatable({},)
+	conn = anEventHandle(event.pull())  
 		print(tostring(conn))
 		if conn ~= string
 			then print("No network found!")	
 				elseif conn == string
 				then print("Network Connected!")
+					else 
 		end
 end
 
