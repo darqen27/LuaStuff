@@ -86,10 +86,14 @@ function yesimhere(ad2, remoteport)
 end
 
 function getWaypoints()
-	waytable = table.concat(nav.findWaypoints())
-	--local inspect = require("inspect")
-	--local waytable = inspect()
-	print(waytable)
+	waytable = nav.findWaypoints(30)
+	n=1
+	for i=1, waytable.n do 
+		bee[n] = {}
+		bee[n] = table.unpack(waytable, n)
+		n=n+1
+		i=i+1
+	end
 end
 
 while running do	
