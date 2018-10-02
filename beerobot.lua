@@ -63,13 +63,14 @@ end
 chk_net()
 
 function areyouthere()
-		if whoami = "server" then return else 
+		if whoami == "server" then return else 
 		print("Sending " .. tostring(wan.broadcast(001, "Are you there?")))	
 		os.sleep(1)
 		end
 end
 
 function yesimhere(ad2, port)
+	print(ad2, port)
 	print("Responding " .. tostring(wan.send(ad2, port, "Yes I am here.")))
 	os.sleep(1)
 end
