@@ -15,16 +15,15 @@ end
 local myEventHandlers = setmetatable({}, { __index = function() return unknownEvent end })
 
 function myEventHandlers.key_down(adress, char, code, player)
-	print(tostring(char))
+	print(char)
 	if (char == char_space) then
 		print("SPACE BAR")
 		running = false
 	end
 end
 
-function myEventHandlers.modem_message(eID,_,_,from,port,_,message, ...)
-	print(tostring(eID))
-	if tostring(eID) == "modem_message"
+function myEventHandlers.modem_message(_,_,from,port,_,message, ...)
+	if message == string
 		then
 			print("Test message from " .. from .. "with: " .. tostring(message, ...))
 			else
