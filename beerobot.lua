@@ -24,7 +24,7 @@ function myEventHandlers.key_down(adress, char, code, player)
 end
 
 function myEventHandlers.modem_message(ad1,ad2,port,dist,message, ...)
-	--print(ad1, ad2, port, dist, message, ...)
+	print(ad1, ad2, port, dist, message, ...)
 		if string.find(message, "Are you there?")
 				then
 					print("Robot Alive!")
@@ -61,7 +61,7 @@ end
 		then print("Port already open")
 	end
 end
-chk_net()
+chk_net(port)
 
 function areyouthere(port)
 		if whoami == "server" then return else 
@@ -72,12 +72,13 @@ end
 
 function yesimhere(ad2, port)
 	print(ad2, port)
+	print(wan.getStrength())
 	print("Responding " .. tostring(wan.send(ad2, port, "Yes I am here.")))
 	os.sleep(1)
 end
 
 while running do	
-areyouthere()
+areyouthere(port)
 eventHandle(event.pull(20))
 os.sleep(1)
 end
