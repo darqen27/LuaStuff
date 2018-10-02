@@ -26,8 +26,10 @@ function myEventHandlers.modem_message(ad1,ad2,port,dist,message, ...)
 	--print(ad1, ad2, port, dist, message, ...)
 		if string.find(message, "Are you there?")
 				then
-				print("Robot Alive!")
-				yesimhere(ad1, port, message)
+					print("Robot Alive!")
+					yesimhere(ad1, port, message)
+						elseif string.find(message, "Yes I am here.")
+							then print("Response") 
 		end
 end
 --	if message == string
