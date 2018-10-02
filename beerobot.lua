@@ -27,7 +27,7 @@ function myEventHandlers.modem_message(ad1,ad2,port,dist,message, ...)
 		if string.find(message, "Are you there?")
 				then
 					print("Robot Alive!")
-					yesimhere(ad1, port, message)
+					yesimhere(ad2, port, message)
 						elseif string.find(message, "Yes I am here.")
 							then print("Response") 
 		end
@@ -65,8 +65,8 @@ function areyouthere()
 		print("Sending " .. tostring(wan.broadcast(001, "Are you there?")))	
 end
 
-function yesimhere(ad1, port)
-	print("Responding " .. tostring(wan.send(ad1, port, "Yes I am here.")
+function yesimhere(ad2, port)
+	print("Responding " .. tostring(wan.send(ad2, port, "Yes I am here.")
 end
 
 while running do	
