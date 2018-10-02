@@ -17,15 +17,15 @@ local myEventHandlers = setmetatable({}, { __index = function() return unknownEv
 function myEventHandlers.key_down(adress, char, code, player)
 	print(char)
 	if (char == char_space) then
-		print("SPACE BAR")
+		--print("SPACE BAR")
 		running = false
 	end
 end
 
 function myEventHandlers.modem_message(ad1,ad2,port,dist,message, ...)
-	print(ad1, ad2, port, dist, message, ...)
+	--print(ad1, ad2, port, dist, message, ...)
 	print(message)
-		if message == string
+		if message == tostring(string)
 				then 
 				areyouthere()
 				print("Network Connected!") 
@@ -54,7 +54,7 @@ end
 	wan.setStrength(10)
 	wan.setWakeMessage("Wake up!")
 	print("Opening port ")
-	if tostring(wan.open(001)) == false 
+	if wan.open(001) == false 
 		then print("Port already open")
 	end
 end
