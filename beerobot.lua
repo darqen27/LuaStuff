@@ -8,7 +8,7 @@ local char_space = string.byte(" ")
 local wan = component.modem
 local event = require("event")
 local whoami = "server"
-
+local port = "101"
 
 function unknownEvent()
 end
@@ -51,20 +51,21 @@ function eventHandle(eID, ...)
 	end
 end
 
- function chk_net()
+ function chk_net(port)
 	localip = wan.address
+	print("I am at address: " .. tostring(localip))
 	wan.setStrength(10)
 	wan.setWakeMessage("Wake up!")
 	print("Opening port ")
-	if wan.open(001) == false 
+	if wan.open(port) == false 
 		then print("Port already open")
 	end
 end
 chk_net()
 
-function areyouthere()
+function areyouthere(port)
 		if whoami == "server" then return else 
-		print("Sending " .. tostring(wan.broadcast(001, "Are you there?")))	
+		print("Sending " .. tostring(wan.broadcast(port, "Are you there?")))	
 		os.sleep(1)
 		end
 end
