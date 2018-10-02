@@ -25,9 +25,8 @@ end
 function myEventHandlers.modem_message(ad1,ad2,port,dist,message, ...)
 	--print(ad1, ad2, port, dist, message, ...)
 		if string.find(message, "Are you there?")
-				then 	print(message)
-				areyouthere()
-				print("Network Connected!") 
+				then
+				print("Robot Alive!")
 		end
 end
 --	if message == string
@@ -67,6 +66,7 @@ end
 
 
 while running do	
-eventHandle(event.pull())
+eventHandle(event.pull(20))
+areyouthere()
 os.sleep(1)
 end
