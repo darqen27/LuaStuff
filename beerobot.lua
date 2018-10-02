@@ -22,11 +22,13 @@ end
 function myEventHandlers.modem_message(_,_,from,port,_,message, ...)
 	if message == "modem_message"
 		then
-			print("Test message from " .. from .. "with: " .. tostring(message))
+			print("Test message from " .. from .. "with: " .. tostring(message, ...))
 			else
-				print("Unknown Message" .. tostring(message))
+				print("Unknown Message" .. tostring(message, ...))
 	end
 end
+
+
 	
 			
 function anEventHandle(eID, ...)
@@ -48,19 +50,20 @@ end
 		anEventHandle(event.pull(5))	
 	end
 end
-
+chk_net()
 
 
 function chk_conn()
-	local conn = chk_net 
-	return conn
-	if conn ~= tostring(string)
+	local conn = chk_net.areyouthere() 
+	print(tostring(conn))
+	if conn ~= string
 		then print("No network found!")	
-			elseif conn == tostring(string)
+			elseif conn == string
 			then print("Network Connected!")
 	end
 end
 
 while running do	
-chk_conn
+chk_conn()
+os.sleep(1)
 end
