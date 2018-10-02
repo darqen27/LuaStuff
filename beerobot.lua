@@ -8,7 +8,7 @@ local char_space = string.byte(" ")
 local wan = component.modem
 local event = require("event")
 local whoami = "robot"
-local port = "101"
+local port = 101
 
 function unknownEvent()
 end
