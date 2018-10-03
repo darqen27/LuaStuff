@@ -106,67 +106,70 @@ end
 function moveAround(xpos, ypos, zpos)
 	myX, myY, myZ = nav.getPosition()
 	print(myX, myY, myZ)
-		function changeX(xpos)
-			local facing = nav.getFacing()
-				
-					if xpos[1] > 0 then 
-						while facing ~= 5 do 
-							robot.turnLeft()
-							facing = nav.getfacing()
-						end
-						if robot.detect() == true 
-							then robot.forward() else end
-						elseif xpos[1] < 0 then 
-							while facing ~= 4 do
-							robot.turnRight()
-							facing = nav.getFacing()
-							end						
-						if robot.detect() == true
-							then robot.back() else end
-						elseif xpos[1] == 0
-						then
-
-				end
-		end
-		function changeY(ypos)
-			if ypos[1] > 0 then
-				if robot.detectUp() == true
-					then robot.up()
-					else
-				end
-			elseif ypos[1] < 0 then
-				if robot.detectDown() == true
-					then robot.down()
-					else
-				end
-			elseif ypos[1] == 0 then
-			end
-		end
-	
-		function changeZ(zpos)
-			local facing = nav.getFacing()
-				
-				if zpos[1] > 0 then 
-					while facing ~= 3 do 
-						robot.turnLeft()
-						facing = nav.getfacing()
-					end
-					if robot.detect() == true 
-						then robot.forward() else end
-					elseif zpos[1] < 0 then 
-						while facing ~= 2 do
-						robot.turnRight()
-						facing = nav.getFacing()
-						end						
-					if robot.detect() == true
-						then robot.back() else end
-					elseif zpos[1] == 0
-					then
-				end
-		end
-		function stuck(xpos, ypos, zpos)
+	changeX(xpos)
+	changeY(ypos)
+	changeZ(zpos)	
+end
+function changeX(xpos)
+	local facing = nav.getFacing()
 		
+			if xpos[1] > 0 then 
+				while facing ~= 5 do 
+					robot.turnLeft()
+					facing = nav.getfacing()
+				end
+				if robot.detect() == true 
+					then robot.forward() else end
+				elseif xpos[1] < 0 then 
+					while facing ~= 4 do
+					robot.turnRight()
+					facing = nav.getFacing()
+					end						
+				if robot.detect() == true
+					then robot.back() else end
+				elseif xpos[1] == 0
+				then
+
 		end
+end
+function changeY(ypos)
+	if ypos[1] > 0 then
+		if robot.detectUp() == true
+			then robot.up()
+			else
+		end
+	elseif ypos[1] < 0 then
+		if robot.detectDown() == true
+			then robot.down()
+			else
+		end
+	elseif ypos[1] == 0 then
+	end
+end
+
+function changeZ(zpos)
+	local facing = nav.getFacing()
+		
+		if zpos[1] > 0 then 
+			while facing ~= 3 do 
+				robot.turnLeft()
+				facing = nav.getfacing()
+			end
+			if robot.detect() == true 
+				then robot.forward() else end
+			elseif zpos[1] < 0 then 
+				while facing ~= 2 do
+				robot.turnRight()
+				facing = nav.getFacing()
+				end						
+			if robot.detect() == true
+				then robot.back() else end
+			elseif zpos[1] == 0
+			then
+		end
+end
+function stuck(xpos, ypos, zpos)
+
 end
 while running do	
 getWaypoints()
