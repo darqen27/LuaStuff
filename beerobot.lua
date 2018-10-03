@@ -140,27 +140,30 @@ function changeY(ypos)
 	if ypos[1] > 0 then
 		if robot.detectUp() == false
 			then robot.up()
-			else
-		end
+			else end
 	elseif ypos[1] < 0 then
 		if robot.detectDown() == false
 			then robot.down()
-			else
-		end
+			else end
 	elseif ypos[1] == 0 then
-	end
-	if xpos[1] and zpos[1] == 0 then return end
+	end	
 		if ypos[1] == 0 
-			then if robot.detect() == true
-				then if robot.detectUp() == false
-					then robot.up()
+			then if xpos[1] and zpos[1] == 0 
+				then return end 
+			elseif ypos[1] ~= 0 
+				then return changeY() end
+			
+			if robot.detect() == true
+				then 
+					if robot.detectUp() == false
+						then robot.up()
 					elseif robot.detectDown() == false
-					then robot.down()
+						then robot.down()
 					end
+				
 			end
-	end
-end
-
+		end
+	
 function changeZ(zpos)
 	print("Move Z: " .. zpos[1])
 	if zpos[1] == 0 then return end
