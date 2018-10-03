@@ -109,8 +109,7 @@ function moveAround(xpos, ypos, zpos)
 		function changeX(xpos)
 			local facing = nav.getFacing()
 				
-					if xpos[1] > 0 and 
-						while facing ~= 5 do 
+					if xpos[1] > 0 and while facing ~= 5 do 
 							robot.turnLeft()
 							facing = nav.getfacing()
 						end
@@ -171,6 +170,6 @@ getWaypoints()
 moveAround(xpos, ypos, zpos)
 --areyouthere(remoteport)
 --chk_net(localport)
---eventHandle(event.pull(20))
+eventHandle(event.pull(10))
 os.sleep(5)
 end
