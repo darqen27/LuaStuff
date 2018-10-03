@@ -116,7 +116,7 @@ function changeX(xpos)
 			if xpos[1] > 0 then 
 				while facing ~= 5 do 
 					robot.turnLeft()
-					facing = nav.getfacing()
+					facing = nav.getFacing()
 				end
 				if robot.detect() == true 
 					then robot.forward() else end
@@ -153,7 +153,7 @@ function changeZ(zpos)
 		if zpos[1] > 0 then 
 			while facing ~= 3 do 
 				robot.turnLeft()
-				facing = nav.getfacing()
+				facing = nav.getFacing()
 			end
 			if robot.detect() == true 
 				then robot.forward() else end
