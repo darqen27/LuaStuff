@@ -1,5 +1,5 @@
 local component = require("component")
-local robot_api = require("robot") --Robot API commented out during testing
+local robot = require("robot") --Robot API commented out during testing
 --local inet = component.internet
 local i_ctrl = component.inventory_controller --This one too
 local sides = require("sides")
