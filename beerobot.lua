@@ -87,11 +87,8 @@ end
 
 function getWaypoints()
 	waytable = nav.findWaypoints(30)
-	n=1
-	for i=1, waytable.n do 
-		bee[n] = {}
-		bee[n] = table.unpack(waytable, n)
-		n=n+1
+	for i, waytable[i].position.n
+		x[i], y[i], z[i] = waytable[i].position[i]
 		i=i+1
 	end
 end
