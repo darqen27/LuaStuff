@@ -109,17 +109,19 @@ function moveAround(xpos, ypos, zpos)
 		function changeX(xpos)
 			local facing = nav.getFacing()
 				
-					if xpos[1] > 0 and while facing ~= 5 do 
+					if xpos[1] > 0 then 
+						while facing ~= 5 do 
 							robot.turnLeft()
 							facing = nav.getfacing()
 						end
-						then if robot.detect() == true 
+						if robot.detect() == true 
 							then robot.forward() else end
-						elseif xpos[1] < 0 and while facing ~= 4 do
+						elseif xpos[1] < 0 then 
+							while facing ~= 4 do
 							robot.turnRight()
 							facing = nav.getFacing()
 							end						
-						then if robot.detect() == true
+						if robot.detect() == true
 							then robot.back() else end
 						elseif xpos[1] == 0
 						then
@@ -144,19 +146,19 @@ function moveAround(xpos, ypos, zpos)
 		function changeZ(zpos)
 			local facing = nav.getFacing()
 				
-				if zpos[1] > 0 and 
+				if zpos[1] > 0 then 
 					while facing ~= 3 do 
 						robot.turnLeft()
 						facing = nav.getfacing()
 					end
-					then if robot.detect() == true 
+					if robot.detect() == true 
 						then robot.forward() else end
-					elseif zpos[1] < 0 and 
+					elseif zpos[1] < 0 then 
 						while facing ~= 2 do
 						robot.turnRight()
 						facing = nav.getFacing()
 						end						
-					then if robot.detect() == true
+					if robot.detect() == true
 						then robot.back() else end
 					elseif zpos[1] == 0
 					then
@@ -165,6 +167,7 @@ function moveAround(xpos, ypos, zpos)
 		function stuck(xpos, ypos, zpos)
 		
 		end
+end
 while running do	
 getWaypoints()
 moveAround(xpos, ypos, zpos)
