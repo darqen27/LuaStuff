@@ -93,7 +93,7 @@ function getWaypoints()
 		xcoord[n] = waytable[n].position[xcoord]
 		ycoord[n] = waytable[n].position[ycoord]
 		zcoord[n] = waytable[n].position[zcoord]
-		print(xcoord[i], ycoord[i], zcoord[i])
+		print(xcoord[n], ycoord[n], zcoord[n])
 		n=n+1
 	end
 end
