@@ -111,6 +111,7 @@ function moveAround(xpos, ypos, zpos)
 	changeZ(zpos)	
 end
 function changeX(xpos)
+	print("Move X: " .. xpos[1])
 	local facing = nav.getFacing()
 		
 			if xpos[1] > 0 then 
@@ -148,6 +149,7 @@ function changeY(ypos)
 end
 
 function changeZ(zpos)
+	print("Move Z: " .. zpos[1])
 	local facing = nav.getFacing()
 		
 		if zpos[1] > 0 then 
