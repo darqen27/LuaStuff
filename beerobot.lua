@@ -64,7 +64,7 @@ end
 		then print("Port already open")
 	end
 end
-chk_net(localport)
+
 
 function areyouthere(remoteport)
 		if whoami == "server" then return else 
@@ -104,6 +104,7 @@ end
 while running do	
 getWaypoints()
 --areyouthere(remoteport)
-eventHandle(event.pull(20))
-os.sleep(1)
+--chk_net(localport)
+--eventHandle(event.pull(20))
+os.sleep(5)
 end
