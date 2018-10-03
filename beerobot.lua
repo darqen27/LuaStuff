@@ -106,12 +106,15 @@ end
 function moveAround(xpos, ypos, zpos)
 	myX, myY, myZ = nav.getPosition()
 	print(myX, myY, myZ)
+	getWaypoints()
 	while xpos[1] ~= 0 do
 	changeX(xpos)
+	getWaypoints()
 	end
 	--changeY(ypos)
 	while zpos[1] ~= 0 do
 	changeZ(zpos)
+	getWaypoints()
 	end
 	--changeY(ypos)
 
@@ -179,7 +182,6 @@ function stuck(xpos, ypos, zpos)
 
 end
 while running do	
-getWaypoints()
 moveAround(xpos, ypos, zpos)
 --areyouthere(remoteport)
 --chk_net(localport)
