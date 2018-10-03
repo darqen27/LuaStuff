@@ -112,19 +112,16 @@ function moveAround(xpos, ypos, zpos)
 end
 function changeX(xpos)
 	print("Move X: " .. xpos[1])
-	local facing = nav.getFacing()
 		
 			if xpos[1] > 0 then 
-				while facing ~= 5 do 
+				while nav.getFacing() ~= 5 do 
 					robot.turnLeft()
-					facing = nav.getFacing()
 				end
 				if robot.detect() == true 
 					then robot.forward() else end
 				elseif xpos[1] < 0 then 
-					while facing ~= 4 do
+					while nav.getFacing() ~= 4 do
 					robot.turnRight()
-					facing = nav.getFacing()
 					end						
 				if robot.detect() == true
 					then robot.back() else end
@@ -150,19 +147,16 @@ end
 
 function changeZ(zpos)
 	print("Move Z: " .. zpos[1])
-	local facing = nav.getFacing()
 		
 		if zpos[1] > 0 then 
-			while facing ~= 3 do 
+			while nav.getFacing() ~= 3 do 
 				robot.turnLeft()
-				facing = nav.getFacing()
 			end
 			if robot.detect() == true 
 				then robot.forward() else end
 			elseif zpos[1] < 0 then 
-				while facing ~= 2 do
+				while nav.getFacing() ~= 2 do
 				robot.turnRight()
-				facing = nav.getFacing()
 				end						
 			if robot.detect() == true
 				then robot.back() else end
