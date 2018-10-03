@@ -88,12 +88,12 @@ end
 function getWaypoints()
 	waytable = nav.findWaypoints(30)
 	i=1
-	x=1 y=2 z=3
+	xcoord=1 ycoord=2 zcoord=3
 	for i=1, waytable.n do
-		x[i] = waytable[i].position[x]
-		y[i] = waytable[i].position[y]
-		z[i] = waytable[i].position[z]
-		print(x[i], y[i], z[i])
+		xcoord[i] = waytable[i].position[xcoord]
+		ycoord[i] = waytable[i].position[ycoord]
+		zcoord[i] = waytable[i].position[zcoord]
+		print(xcoord[i], ycoord[i], zcoord[i])
 	end
 end
 
