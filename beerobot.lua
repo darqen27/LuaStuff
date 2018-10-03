@@ -117,13 +117,13 @@ function changeX(xpos)
 				while nav.getFacing() ~= 5 do 
 					robot.turnLeft()
 				end
-				if robot.detect() == true 
+				if robot.detect() == false 
 					then robot.forward() else end
 				elseif xpos[1] < 0 then 
 					while nav.getFacing() ~= 4 do
 					robot.turnRight()
 					end						
-				if robot.detect() == true
+				if robot.detect() == false
 					then robot.back() else end
 				elseif xpos[1] == 0
 				then
@@ -132,12 +132,12 @@ function changeX(xpos)
 end
 function changeY(ypos)
 	if ypos[1] > 0 then
-		if robot.detectUp() == true
+		if robot.detectUp() == false
 			then robot.up()
 			else
 		end
 	elseif ypos[1] < 0 then
-		if robot.detectDown() == true
+		if robot.detectDown() == false
 			then robot.down()
 			else
 		end
@@ -152,13 +152,13 @@ function changeZ(zpos)
 			while nav.getFacing() ~= 3 do 
 				robot.turnLeft()
 			end
-			if robot.detect() == true 
+			if robot.detect() == false
 				then robot.forward() else end
 			elseif zpos[1] < 0 then 
 				while nav.getFacing() ~= 2 do
 				robot.turnRight()
 				end						
-			if robot.detect() == true
+			if robot.detect() == false
 				then robot.back() else end
 			elseif zpos[1] == 0
 			then
