@@ -15,6 +15,8 @@ local nav = component.navigation
 local xpos = {}
 local ypos = {}
 local zpos = {}
+local startX, startY, startZ = nav.getPosition()
+
 
 function unknownEvent()
 end
@@ -104,6 +106,37 @@ end
 function moveAround(xpos, ypos, zpos)
 	myX, myY, myZ = nav.getPosition()
 	print(myX, myY, myZ)
+		function changeX(xpos)
+			local facing = nav.getFacing()
+				
+					if xpos[1] > 0 and 
+						while facing ~= 5 do 
+							robot.turnLeft()
+							facing = nav.getfacing()
+						end
+						then if robot.detect() == true 
+							then robot.forward() else return end
+						elseif xpos[1] < 0 and while facing ~= 4 do
+							robot.turnRight()
+							facing = nav.getFacing()
+							end						
+						then if robot.detect() == true
+							then robot.back() else return end
+						elseif xpos[1] == 0
+						then return
+
+				end
+		end
+		function changeY(ypos)
+			if robot.detect() == false and robotdetectUp() == true
+				then robot.up()
+				elseif robot.detect() == false and robotdetectDown() == true
+					then robot.down()
+				else
+				return
+			end
+		end
+			
 end
 while running do	
 getWaypoints()
