@@ -12,6 +12,9 @@ local localport = 102
 local remoteport = 101
 local waytable = setmetatable({}, {}, {})
 local nav = component.navigation
+local xpos = {}
+local ypos = {}
+local zpos = {}
 
 function unknownEvent()
 end
@@ -89,9 +92,6 @@ function getWaypoints()
 	waytable = nav.findWaypoints(30)
 	local xcoord=1 ycoord=2 zcoord=3
 	local n=1
-	xpos = {}
-	ypos = {}
-	zpos = {}
 	for i=1, waytable.n do
 		xpos[n] = waytable[n].position[xcoord]
 		ypos[n] = waytable[n].position[ycoord]
@@ -101,8 +101,13 @@ function getWaypoints()
 	end
 end
 
+function moveAround(xpos, ypos, zpos)
+	myX, myY, myZ = nav.getPosition()
+	print(myX, myY, myZ)
+end
 while running do	
 getWaypoints()
+moveAround(xpos, ypos, zpos)
 --areyouthere(remoteport)
 --chk_net(localport)
 --eventHandle(event.pull(20))
